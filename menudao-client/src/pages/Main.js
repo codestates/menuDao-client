@@ -9,15 +9,8 @@ import { showModal, dropModal} from "../module/modal"
 function Main() {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.modalReducer.show);
-
-  // openModal = () => {
-  //   dispatchEvent
-  // };
-
-  // closeModal = () => {
-  //   this.setState({ isModalOpen: false });
-  // };
-
+  const joinModal = document.querySelector('#join-container');
+  const loginModal = document.querySelector('#login-container');
   const onShowModal = () => dispatch(showModal());
   const onDropModal = () => dispatch(dropModal());
 
@@ -26,11 +19,11 @@ function Main() {
         {/* <div id="main-container"> */}
           <div id="main-btncontainer">
             <div>
-            <button className="main-btn" onClick={() => onShowModal()}>Join</button>
-            { show && <Join onDropModal={onDropModal}/>}
               <button className="main-btn">
                 Login
               </button>
+              <button className="main-btn" onClick={() => onShowModal(joinModal)}>Join</button>
+            { show && <Join onDropModal={onDropModal}/>}
             </div>
           </div>
           <div id="main-subcontainer">
