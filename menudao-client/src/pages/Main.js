@@ -1,6 +1,7 @@
 // 접속 시 메인 화면
 import React from "react";
-import Login from "./components/Login";
+import Login from "../components/Login";
+//import { Link } from "react-router-dom";
 //import "./App.css";
 class Main extends React.Component {
   constructor(props) {
