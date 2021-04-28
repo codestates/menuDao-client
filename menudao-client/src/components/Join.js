@@ -1,12 +1,13 @@
 // 회원가입하는 모달창
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-function Join({ joinRef }) {
-  const today = new Date();
-  const thisYear = today.getFullYear();
+function Join({ onDropModal }) {
+  const state = useSelector(state => state.notificationReducer);
   return(
     <>
       <div id="join-container"> 
+        <button className="join-close-btn" onClick={() => onDropModal()}>X</button>
         <div id="join-title">Join</div>
         <input className="join-input" placeholder="이름"/>
         <input className="join-input" placeholder="ID"/>
