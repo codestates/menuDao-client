@@ -1,8 +1,9 @@
-import { combineReducers } from 'redux';
-import modalReducer from './modal';
-
+import { combineReducers } from "redux";
+import JoinReducer from "./joinModal";
+import LoginReducer from "./loginModal";
 const rootReducer = combineReducers({
-  modalReducer,
+  JoinReducer,
+  LoginReducer,
 });
 
 export default rootReducer;

@@ -1,13 +1,15 @@
 // 회원가입하는 모달창
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 
-function Join({ onDropModal }) {
+function Join({ JoinonDropModal }) {
 
   return(
     <>
-      <div id="join-container"> 
-        <button className="join-close-btn" onClick={() => onDropModal()}>X</button>
+      <div id="join-container">
+        <button className="join-close-btn" onClick={() => JoinonDropModal()}>
+          X
+        </button>
         <div id="join-title">Join</div>
         <ul className="input-list">
           <li className="each-input">
@@ -35,7 +37,7 @@ function Join({ onDropModal }) {
         <button className="join-btn">회원가입</button>
       </div>
     </>
-  )
+  );
 }
 
 export default Join;
