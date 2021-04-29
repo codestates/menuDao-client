@@ -1,10 +1,22 @@
 // 메인화면에서 로그인 버튼 클릭 시 모달창 생성
 import React from "react";
-function Login({ LoginonDropModal, JoinonShowModal }) {
+function Login({
+  LoginonDropModal,
+  JoinonShowModal,
+  BackgroundWhite,
+  btnFontBlack,
+}) {
   return (
     <>
       <div id="login-container">
-        <button className="login-close-btn" onClick={() => LoginonDropModal()}>
+        <button
+          className="login-close-btn"
+          onClick={() => {
+            LoginonDropModal();
+            BackgroundWhite();
+            btnFontBlack();
+          }}
+        >
           X
         </button>
         <div id="login-title">Log in</div>
