@@ -11,18 +11,19 @@ function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
             JoinonDropModal();
             BackgroundWhite();
             btnFontBlack();
-          }}>
+          }}
+        >
           X
         </button>
         <div id="join-title">Join</div>
         <ul className="join-input-list">
           <li className="join-each-input">
             <span className="join-subtitle">이름</span>
-            <input className="join-input" placeholder="이름"/>  
+            <input className="join-input" placeholder="이름" onChange={} />
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">아이디</span>
-            <input className="join-input" placeholder="ID"/> 
+            <input className="join-input" placeholder="ID" />
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">생년월일</span>
@@ -34,16 +35,20 @@ function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
           <li className="join-each-input">
             <span className="join-subtitle">성별</span>
             <div id="radio-container">
-              <label><input name="gener" type="radio" className="join-gender" />      남성</label>
-              <label><input name="gener" type="radio" className="join-gender" />      여성</label>
+              <label>
+                <input name="gener" type="radio" className="join-gender" /> 남성
+              </label>
+              <label>
+                <input name="gener" type="radio" className="join-gender" /> 여성
+              </label>
             </div>
           </li>
           <li className="join-each-input">
-          <span className="join-subtitle">비밀번호</span>
-          <input className="join-input" placeholder="비밀번호" />
+            <span className="join-subtitle">비밀번호</span>
+            <input className="join-input" placeholder="비밀번호" />
           </li>
           <li className="join-each-input">
-          <span className="join-subtitle">비밀번호 확인</span>
+            <span className="join-subtitle">비밀번호 확인</span>
             <input className="join-input" placeholder="비밀번호 확인" />
           </li>
         </ul>
