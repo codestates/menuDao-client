@@ -16,6 +16,36 @@ function Main() {
   const LoginonShowModal = () => dispatch(loginshowModal());
   const LoginonDropModal = () => dispatch(logindropModal());
 
+  // Modal 창이 실행돨 경우, 주변 바탕화면 색이 흐려진다
+  const BackgroundGray = function () {
+    const root = document.querySelector("#root");
+    root.style.background = "rgba(0, 0, 0, 0.6)";
+  };
+
+  // Modal창의 닫기 버튼을 눌렀을 경우, 다시 원래대로 바탕화면 색이 돌아온다
+  const BackgroundWhite = function () {
+    const root = document.querySelector("#root");
+    root.style.background = "#fff";
+  };
+
+  // 바탕화면 색이 흐려지는 동시에 메인 화면 오른쪽 상단의 버튼 2개도 함께 색상이 바뀐다
+  const btnFontWhite = function () {
+    const mainbtn = document.querySelectorAll(".main-btn");
+    for (let btn of mainbtn) {
+      btn.style.background = "none";
+      btn.style.color = "#fff";
+    }
+  };
+
+  // Modal 창 닫기 버튼을 누르면 메인 화면 버튼들도 다시 원래대로 색상이 돌아온다
+  const btnFontBlack = function () {
+    const mainbtn = document.querySelectorAll(".main-btn");
+    for (let btn of mainbtn) {
+      btn.style.background = "#fff";
+      btn.style.color = "black";
+    }
+  };
+
   return (
     <>
       <div id="main-btncontainer">
@@ -25,24 +55,36 @@ function Main() {
             onClick={() => {
               JoinonShowModal();
               LoginonDropModal();
+              BackgroundGray();
+              btnFontWhite();
             }}
           >
             Join
           </button>
-          {Joinshow && <Join JoinonDropModal={JoinonDropModal} />}
+          {Joinshow && (
+            <Join
+              JoinonDropModal={JoinonDropModal}
+              BackgroundWhite={BackgroundWhite}
+              btnFontBlack={btnFontBlack}
+            />
+          )}
           <button
             className="main-btn"
             onClick={() => {
               LoginonShowModal();
               JoinonDropModal();
+              BackgroundGray();
+              btnFontWhite();
             }}
           >
             Login
           </button>
           {Loginshow && (
             <Login
+              BackgroundWhite={BackgroundWhite}
               LoginonDropModal={LoginonDropModal}
               JoinonShowModal={JoinonShowModal}
+              btnFontBlack={btnFontBlack}
             />
           )}
         </div>

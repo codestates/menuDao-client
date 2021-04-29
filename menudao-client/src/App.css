@@ -6,6 +6,14 @@
   box-sizing: border-box;
   margin: 0px;
 }
+button {
+  cursor: pointer;
+}
+input:focus {
+  outline: none;
+  border: 1.5px solid rgb(255, 154, 30);
+  color: rgb(255, 154, 30);
+}
 #root {
   display: grid;
   width: 100%;
@@ -28,9 +36,23 @@
   float: left;
   margin-right: 15px;
   background-color: #fff;
-  border: 1px solid rgb(255, 154, 30);
+  border: none;
+  font-size: 13px;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
+}
+.main-btn:hover {
+  animation-name: btn-hover;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes btn-hover {
+  from {
+    color: black;
+  }
+  to {
+    color: rgb(255, 154, 30);
+  }
 }
 /* title style */
 #main-subcontainer {
@@ -50,7 +72,7 @@
 }
 
 /* ul, li style */
-.input-list {
+ul {
   list-style: none;
 }
 
@@ -58,32 +80,140 @@
 #join-container {
   border: 1px solid red;
   position: absolute;
-  width: 400px;
-  height: 450px;
+  width: 450px;
+  height: 500px;
   top: 50%;
   left: 50%;
   grid-column: 2 / 5;
   grid-row: 4 / 5;
   z-index: 1000;
-  margin: -250px 0px 0 -200px;
+  margin: -250px 0px 0 -225px;
   background-color: white;
-  transition: all ease 1s;
 }
 #join-title {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 40px;
+  font-size: 20px;
 }
-.input-list {
-  text-align: center;
+.join-input-list {
+  width: 400px;
   padding: 0;
+  display: block;
+  margin: 0 auto;
+}
+.join-input {
+  height: 30px;
+  border: 1px solid #ffcc80;
+  width: 260px;
+  text-align: left;
+  border-radius: 5px;
+}
+.join-input::placeholder {
+  padding-left: 5px;
+  font-size: 12px;
 }
 .join-btn {
-  margin: 0px auto;
+  margin: 0 auto;
   display: block;
+  width: 380px;
+  margin-top: 20px;
+  height: 30px;
+  border: none;
+  padding: 0;
+  background-color: #ffcc80;
+  color: #fff;
+  border-radius: 5px;
 }
 .join-close-btn {
   float: right;
 }
-.each-input {
-  margin-bottom: 15px;
+.join-gender {
+  font-size: 12px;
+  text-align: left;
+}
+label {
+  font-size: 12px;
+  margin-left: 15px;
+  text-align: left;
+}
+.join-each-input {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.join-subtitle {
+  font-size: 11px;
+  width: 64px;
+  height: 30px;
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+  float: left;
+}
+
+/* 로그인 style */
+#login-container {
+  border: 1px solid black;
+  position: absolute;
+  width: 400px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  margin: -175px 0 0 -200px;
+  background-color: #fff;
+  z-index: 1000;
+}
+#login-title {
+  text-align: center;
+  margin: 40px;
+  font-size: 20px;
+}
+
+#login-btn {
+  width: 300px;
+  margin-top: 20px;
+  height: 28px;
+  border: none;
+  padding: 0;
+  background-color: #ffcc80;
+  vertical-align: middle;
+  color: #fff;
+}
+#login-to-join {
+  background-color: #fff;
+  border: none;
+  color: rgb(123, 123, 123);
+  font-size: 11px;
+}
+.login-sub-btn {
+  width: 300px;
+  margin: 0 auto;
+  padding: 0;
+}
+.login-each-btn {
+  width: 300px;
+}
+.login-input-list {
+  text-align: center;
+  padding: 0;
+}
+.login-input {
+  width: 300px;
+  height: 32px;
+  border: 1px solid #ffcc80;
+  /* background-color: rgb(174, 174, 174); */
+}
+.login-input::placeholder {
+  color: rgb(123, 123, 123);
+  padding-left: 10px;
+}
+.login-each-input {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.login-close-btn {
+  float: right;
+  color: rgb(123, 123, 123);
+  background-color: #fff;
+  border: none;
+  margin: 5px;
 }
