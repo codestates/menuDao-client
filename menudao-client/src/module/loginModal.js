@@ -30,12 +30,14 @@ const initialState = {
 export default function LoginReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_SHOW_MODAL:
+      console.log("login modal 열기");
       return {
         ...state,
         loginShow: true,
         loginElement: document.querySelector("#login-container"),
       };
     case LOGIN_DROP_MODAL:
+      console.log("login modal 닫기");
       return {
         ...state,
         loginShow: false,

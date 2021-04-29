@@ -18,24 +18,39 @@ function Main() {
 
   return (
     <>
-      {/* <div id="main-container"> */}
       <div id="main-btncontainer">
         <div>
-          <button className="main-btn" onClick={() => JoinonShowModal()}>
+          <button
+            className="main-btn"
+            onClick={() => {
+              JoinonShowModal();
+              LoginonDropModal();
+            }}
+          >
             Join
           </button>
           {Joinshow && <Join JoinonDropModal={JoinonDropModal} />}
-          <button className="main-btn" onClick={() => LoginonShowModal()}>
+          <button
+            className="main-btn"
+            onClick={() => {
+              LoginonShowModal();
+              JoinonDropModal();
+            }}
+          >
             Login
           </button>
-          {Loginshow && <Login LoginonDropModal={LoginonDropModal} />}
+          {Loginshow && (
+            <Login
+              LoginonDropModal={LoginonDropModal}
+              JoinonShowModal={JoinonShowModal}
+            />
+          )}
         </div>
       </div>
       <div id="main-subcontainer">
         <h1 id="title">MenuDao</h1>
         <div id="subtitle">오늘 뭐 먹을까?</div>
       </div>
-      {/* </div> */}
     </>
   );
 }
