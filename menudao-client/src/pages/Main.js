@@ -1,44 +1,100 @@
 // 접속 시 메인 화면
 import React from "react";
-import Login from "./components/Login";
-//import "./App.css";
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isModalOpen: false,
-    };
-  }
+import Login from "../components/Login";
+import { useSelector, useDispatch } from "react-redux";
+import Join from "../components/Join";
+import { joinshowModal, joindropModal } from "../module/joinModal";
+import { loginshowModal, logindropModal } from "../module/loginModal";
 
-  openModal = () => {
-    this.setState({ isModalOpen: true });
+function Main() {
+  const dispatch = useDispatch();
+  const Joinshow = useSelector((state) => state.JoinReducer.joinShow);
+  const Loginshow = useSelector((state) => state.LoginReducer.loginShow);
+
+  const JoinonShowModal = () => dispatch(joinshowModal());
+  const JoinonDropModal = () => dispatch(joindropModal());
+  const LoginonShowModal = () => dispatch(loginshowModal());
+  const LoginonDropModal = () => dispatch(logindropModal());
+
+  // Modal 창이 실행돨 경우, 주변 바탕화면 색이 흐려진다
+  const BackgroundGray = function () {
+    const root = document.querySelector("#root");
+    root.style.background = "rgba(0, 0, 0, 0.6)";
   };
 
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
+  // Modal창의 닫기 버튼을 눌렀을 경우, 다시 원래대로 바탕화면 색이 돌아온다
+  const BackgroundWhite = function () {
+    const root = document.querySelector("#root");
+    root.style.background = "#fff";
   };
 
-  render() {
-    return (
-      <>
-        <div id="main-container">
-          <div id="main-btncontainer">
-            <div>
-              <button className="main-btn" onClick={this.openModal}>
-                Login
-              </button>
-              <Login isOpen={this.state.isModalOpen} close={this.closeModal} />
-            </div>
-            <button className="main-btn">Join</button>
-          </div>
-          <div id="main-subcontainer">
-            <h1 id="title">MenuDao</h1>
-            <div id="subtitle">오늘 뭐 먹을까?</div>
-          </div>
+  // 바탕화면 색이 흐려지는 동시에 메인 화면 오른쪽 상단의 버튼 2개도 함께 색상이 바뀐다
+  const btnFontWhite = function () {
+    const mainbtn = document.querySelectorAll(".main-btn");
+    for (let btn of mainbtn) {
+      btn.style.background = "none";
+      btn.style.color = "#fff";
+    }
+  };
+
+  // Modal 창 닫기 버튼을 누르면 메인 화면 버튼들도 다시 원래대로 색상이 돌아온다
+  const btnFontBlack = function () {
+    const mainbtn = document.querySelectorAll(".main-btn");
+    for (let btn of mainbtn) {
+      btn.style.background = "#fff";
+      btn.style.color = "black";
+    }
+  };
+
+  return (
+    <>
+      <div id="main-btncontainer">
+        <div>
+          <button
+            className="main-btn"
+            onClick={() => {
+              JoinonShowModal();
+              LoginonDropModal();
+              BackgroundGray();
+              btnFontWhite();
+            }}
+          >
+            Join
+          </button>
+          {Joinshow && (
+            <Join
+              JoinonDropModal={JoinonDropModal}
+              BackgroundWhite={BackgroundWhite}
+              btnFontBlack={btnFontBlack}
+            />
+          )}
+          <button
+            className="main-btn"
+            onClick={() => {
+              LoginonShowModal();
+              JoinonDropModal();
+              BackgroundGray();
+              btnFontWhite();
+            }}
+          >
+            Login
+          </button>
+          {Loginshow && (
+            <Login
+              BackgroundWhite={BackgroundWhite}
+              LoginonDropModal={LoginonDropModal}
+              JoinonShowModal={JoinonShowModal}
+              btnFontBlack={btnFontBlack}
+            />
+          )}
         </div>
-      </>
-    );
-  }
+      </div>
+      <div id="main-subcontainer">
+        <h1 id="title">MenuDao</h1>
+        <div id="subtitle">오늘 뭐 먹을까?</div>
+      </div>
+    </>
+  );
 }
 
 export default Main;
