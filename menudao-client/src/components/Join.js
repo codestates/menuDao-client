@@ -1,11 +1,18 @@
 // 회원가입하는 모달창
 import React from "react";
 
-function Join({ JoinonDropModal }) {
+function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
   return (
     <>
       <div id="join-container">
-        <button className="join-close-btn" onClick={() => JoinonDropModal()}>
+        <button
+          className="join-close-btn"
+          onClick={() => {
+            JoinonDropModal();
+            BackgroundWhite();
+            btnFontBlack();
+          }}
+        >
           X
         </button>
         <div id="join-title">Join</div>
