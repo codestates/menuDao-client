@@ -6,11 +6,12 @@ const LOGIN_DROP_MODAL = "LOGIN_DROP_MODAL";
 /*
 	Actions
 */
-export const loginshowModal = (element) => ({
+export const loginshowModal = () => ({
   type: LOGIN_SHOW_MODAL,
-  payload: element,
 });
-export const logindropModal = () => ({ type: LOGIN_DROP_MODAL });
+export const logindropModal = () => ({
+  type: LOGIN_DROP_MODAL,
+});
 /*
 	InitialState
 */

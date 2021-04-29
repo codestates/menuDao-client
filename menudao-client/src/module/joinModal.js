@@ -6,11 +6,12 @@ const JOIN_DROP_MODAL = "JOIN_DROP_MODAL";
 /*
 	Actions
 */
-export const joinshowModal = (element) => ({
+export const joinshowModal = () => ({
   type: JOIN_SHOW_MODAL,
-  payload: element,
 });
-export const joindropModal = () => ({ type: JOIN_DROP_MODAL });
+export const joindropModal = () => ({
+  type: JOIN_DROP_MODAL,
+});
 /*
 	InitialState
 */
