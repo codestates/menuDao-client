@@ -90,7 +90,7 @@ function Main() {
         </div>
       </div>
       <div id="main-subcontainer">
-        <h1 id="title">MenuDao</h1>
+        <h1 id="title"><img src="./Asset9.png"></img></h1>
         <div id="subtitle">오늘 뭐 먹을까?</div>
       </div>
     </>
