@@ -12,7 +12,7 @@ button {
 input:focus {
   outline: none;
   border: 1.5px solid rgb(255, 154, 30);
-  color:rgb(255, 154, 30)
+  color:rgba(255, 154, 30, 0.406)
 }
 #root{
   display: grid;
@@ -35,11 +35,11 @@ input:focus {
 .main-btn {
   float: left;
   margin-right: 15px;
-  background-color: #fff;
   border: none; 
   font-size: 13px;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
+  background: transparent;
 }
 .main-btn:hover {
   animation-name: btn-hover;
@@ -78,7 +78,6 @@ ul {
 
 /* 회원가입 form style */
 #join-container {
-  border: 1px solid red;
   position: absolute;
   width: 450px;
   height: 500px;
@@ -87,7 +86,7 @@ ul {
   grid-column: 2 / 5;
   grid-row: 4 / 5;
   z-index: 1000;
-  margin: -250px 0px 0 -225px;
+  margin: -250px 0 0 -225px;
   background-color: white;
 }
 #join-title {
@@ -126,15 +125,22 @@ ul {
 }
 .join-close-btn {
   float: right;
-}
-.join-gender {
-  font-size: 12px;
-  text-align: left;
+  color:rgb(123, 123, 123);
+  background-color: #fff;
+  border: none; 
+  margin: 5px;
 }
 label {
   font-size: 12px;
-  margin-left: 15px;
+  margin-left: 35px;
+  /* text-align: left;s */
+}
+#radio-container {
+  /* float: left; */
+  width: 380px;
   text-align: left;
+  vertical-align: middle;
+  width: 260px; 
 }
 .join-each-input {
   margin-bottom: 20px; 
@@ -152,7 +158,6 @@ label {
 
 /* 로그인 style */
 #login-container {
-  border: 1px solid black;
   position: absolute;
   width: 400px;
   height: 350px;
@@ -216,5 +221,50 @@ label {
   background-color: #fff;
   border: none; 
   margin: 5px;
+}
+
+/* Animation */
+#join-container {
+  animation-name: open-modal;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+}
+@keyframes open-modal {
+  from {
+    opacity: 0;
+    margin: -280px 0px 0 -225px;
+  }
+  to {
+    opacity: 100%;
+    margin: -250px 0px 0 -225px;
+  }
+}
+#login-container {
+  animation-name: open-modal-login;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+}
+@keyframes open-modal-login {
+  from {
+    opacity: 0;
+    margin: -225px 0px 0 -200px;
+  }
+  to {
+    opacity: 100%;
+    margin: -175px 0 0 -200px;
+  }
+}
+#join-title, #login-title, .join-input-list, .login-input-list {
+  animation-name: open-modal-inner;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+} 
+@keyframes open-modal-inner {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
