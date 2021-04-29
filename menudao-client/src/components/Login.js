@@ -1,16 +1,18 @@
 // 메인화면에서 로그인 버튼 클릭 시 모달창 생성
 import React from "react";
-function Login({ LoginonDropModal }) {
-  const cilickCloseBtn = function(e) {
-    // LoginonShowModal();
-    const root = document.querySelector('#root');
-    root.style.backgroundColor = "#fff";
-    LoginonDropModal();
-  }
+function Login({ LoginonDropModal, JoinonShowModal, BackgroundWhite, btnFontBlack }) 
+{
   return (
     <>
       <div id="login-container">
-        <button className="login-close-btn" onClick={() => cilickCloseBtn()}>
+        <button
+          className="login-close-btn"
+          onClick={() => {
+            LoginonDropModal();
+            BackgroundWhite();
+            btnFontBlack();
+          }}
+        >
           X
         </button>
         <div id="login-title">Log in</div>
@@ -24,7 +26,7 @@ function Login({ LoginonDropModal }) {
         </ul>
         <ul className="login-sub-btn">
           <li className="login-each-btn">
-            <button id="login-to-join">아직 계정이 없으신가요?</button>
+            <button id="login-to-join" onClick={() => {JoinonShowModal(); LoginonDropModal();}}>아직 계정이 없으신가요?</button>
           </li>
           <li className="login-each-btn">
           <button id="login-btn">LOG IN</button>

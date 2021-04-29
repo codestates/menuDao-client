@@ -1,21 +1,17 @@
 // 회원가입하는 모달창
 import React from "react";
-import { useSelector } from "react-redux";
 
-function Join({ JoinonDropModal }) {
-  const cilickCloseBtn = function(e) {
-    // LoginonShowModal();
-    const root = document.querySelector('#root');
-    root.style.backgroundColor = "#fff";
-    const btn = document.querySelector('.main-btn');
-    btn.style.backgroundColor = "none";
-    btn.style.color = "#000";
-    JoinonDropModal();
-  }
-  return(
+function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
+  return (
     <>
       <div id="join-container">
-        <button className="join-close-btn" onClick={() => cilickCloseBtn()}>
+        <button
+          className="join-close-btn"
+          onClick={() => {
+            JoinonDropModal();
+            BackgroundWhite();
+            btnFontBlack();
+          }}>
           X
         </button>
         <div id="join-title">Join</div>
@@ -30,7 +26,10 @@ function Join({ JoinonDropModal }) {
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">생년월일</span>
-            <input className="join-input" placeholder="주민번호 앞자리를 입력해주세요."/>
+            <input
+              className="join-input"
+              placeholder="주민번호 앞자리를 입력해주세요."
+            />
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">성별</span>
