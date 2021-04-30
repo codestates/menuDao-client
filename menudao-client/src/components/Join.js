@@ -1,7 +1,14 @@
 // 회원가입하는 모달창
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  checkUserId,
+  checkUserBirth,
+  checkUserPWcheckSamePW,
+} from "../module/validationCheck";
 
 function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
+  const dispatch = useDispatch();
   return (
     <>
       <div id="join-container">
@@ -19,17 +26,21 @@ function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
         <ul className="join-input-list">
           <li className="join-each-input">
             <span className="join-subtitle">이름</span>
-            <input className="join-input" placeholder="이름" onChange={} />
+            <input className="join-input" placeholder="이름을 작성해주세요" />
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">아이디</span>
-            <input className="join-input" placeholder="ID" />
+            <input
+              className="join-input-id"
+              placeholder="영어 또는 숫자만 가능합니다"
+              onChange={(e) => dispatch(checkUserId(e.target.value))}
+            />
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">생년월일</span>
             <input
               className="join-input"
-              placeholder="주민번호 앞자리를 입력해주세요."
+              placeholder="주민번호 앞자리를 입력해주세요"
             />
           </li>
           <li className="join-each-input">
@@ -45,11 +56,17 @@ function Join({ JoinonDropModal, BackgroundWhite, btnFontBlack }) {
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">비밀번호</span>
-            <input className="join-input" placeholder="비밀번호" />
+            <input
+              className="join-input"
+              placeholder="8자 이상, 영어 또는 숫자 또는 특수문자 하나 이상 포함"
+            />
           </li>
           <li className="join-each-input">
             <span className="join-subtitle">비밀번호 확인</span>
-            <input className="join-input" placeholder="비밀번호 확인" />
+            <input
+              className="join-input"
+              placeholder="비밀번호를 확인해주세요"
+            />
           </li>
         </ul>
         <button className="join-btn">회원가입</button>

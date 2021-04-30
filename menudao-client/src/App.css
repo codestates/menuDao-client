@@ -12,7 +12,7 @@ button {
 input:focus {
   outline: none;
   border: 1.5px solid rgb(255, 154, 30);
-  color:rgba(255, 154, 30, 0.406)
+  color: rgba(255, 154, 30, 0.406);
 }
 #root {
   display: grid;
@@ -35,7 +35,7 @@ input:focus {
 .main-btn {
   float: left;
   margin-right: 15px;
-  border: none; 
+  border: none;
   font-size: 13px;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
@@ -68,7 +68,10 @@ input:focus {
 }
 #subtitle {
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 18px;
+}
+img {
+  width: 400px;
 }
 
 /* ul, li style */
@@ -102,7 +105,14 @@ ul {
 }
 .join-input {
   height: 30px;
-  border: 1px solid #ffcc80;
+  border: 1px solid red;
+  width: 260px;
+  text-align: left;
+  border-radius: 5px;
+}
+.join-input-id {
+  height: 30px;
+  border: 1px solid red;
   width: 260px;
   text-align: left;
   border-radius: 5px;
@@ -125,9 +135,9 @@ ul {
 }
 .join-close-btn {
   float: right;
-  color:rgb(123, 123, 123);
+  color: rgb(123, 123, 123);
   background-color: #fff;
-  border: none; 
+  border: none;
   margin: 5px;
 }
 label {
@@ -140,7 +150,7 @@ label {
   width: 380px;
   text-align: left;
   vertical-align: middle;
-  width: 260px; 
+  width: 260px;
 }
 .join-each-input {
   margin-bottom: 20px;
@@ -254,11 +264,14 @@ label {
     margin: -175px 0 0 -200px;
   }
 }
-#join-title, #login-title, .join-input-list, .login-input-list {
+#join-title,
+#login-title,
+.join-input-list,
+.login-input-list {
   animation-name: open-modal-inner;
   animation-duration: 0.7s;
   animation-fill-mode: forwards;
-} 
+}
 @keyframes open-modal-inner {
   from {
     opacity: 0;
@@ -267,4 +280,3 @@ label {
     opacity: 100%;
   }
 }
-
