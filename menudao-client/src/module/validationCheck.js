@@ -158,10 +158,10 @@ export default function validationReducer(state = initialState, action) {
         };
       }
     case CHECK_SAME_PW:
-      console.log("user 패스워드", state.userInfo.userPW);
+      console.log("user 패스워드", state.userInfo.user_password);
       console.log("user 패스워드 확인", action.payload);
       const pwcheckInput = document.querySelector(".join-input-samepw");
-      if (state.userInfo.userPW === action.payload) {
+      if (state.userInfo.user_password === action.payload) {
         pwcheckInput.style.border = "1px solid blue";
         return {
           ...state,
