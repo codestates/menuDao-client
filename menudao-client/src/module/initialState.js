@@ -8,9 +8,11 @@ export const initialState = {
     loginElement: null,
   },
   userInfo: {
-    userId: '',
-    userBirth: '',
-    userPW: '',
-    checkPW: '',
-  }
-}
+    user_name: "",
+    user_sex: "",
+    user_id: "",
+    user_birthday: "",
+    user_password: "",
+    userPWcheck: false,
+  },
+};
