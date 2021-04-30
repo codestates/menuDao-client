@@ -7,9 +7,10 @@
   margin: 0;
   padding: 0;
 }
-html, body {
+html,
+body {
   height: 100%;
-  overflow:hidden
+  overflow: hidden;
 }
 button {
   cursor: pointer;
@@ -17,7 +18,7 @@ button {
 input:focus {
   outline: none;
   border: 1.5px solid #ffb74d;
-  color:rgba(255, 154, 30, 0.406)
+  color: rgba(255, 154, 30, 0.406);
 }
 #root {
   display: grid;
@@ -37,7 +38,7 @@ input:focus {
 }
 .main-btn {
   margin-left: 30px;
-  border: none; 
+  border: none;
   font-weight: 400;
   font-size: 15px;
   color: #424242;
@@ -87,7 +88,7 @@ ul {
   margin: 0 auto;
 }
 .join-span-container {
-  flex-basis : 66px;
+  flex-basis: 66px;
 }
 .join-input-container {
   width: 310px;
@@ -141,9 +142,9 @@ label {
 }
 .join-close-btn {
   float: right;
-  color:rgb(123, 123, 123);
+  color: rgb(123, 123, 123);
   background-color: #fff;
-  border: none; 
+  border: none;
   margin: 5px;
 }
 /* 로그인 style */
@@ -243,7 +244,7 @@ label {
     color: black;
   }
   to {
-    color:#ffb74d;
+    color: #ffb74d;
   }
 }
 #join-container {
@@ -259,7 +260,7 @@ label {
   }
   to {
     opacity: 100%;
-    margin:  -250px 0 0 -225px;
+    margin: -250px 0 0 -225px;
   }
 }
 #login-container {
@@ -288,18 +289,3 @@ label {
     /* margin: -190px 0px 0 -200px; */
   }
 }
-/* #join-title, #login-title, .join-input-list, .login-input-list {
-  animation-name: open-modal-inner;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-} 
-@keyframes open-modal-inner {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100%;
-  }
-} */
-
