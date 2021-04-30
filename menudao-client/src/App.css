@@ -4,25 +4,28 @@
 /* main style */
 * {
   box-sizing: border-box;
-  margin: 0px;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
 }
 button {
   cursor: pointer;
 }
 input:focus {
   outline: none;
-  border: 1.5px solid rgb(255, 154, 30);
+  border: 1.5px solid #ffb74d;
   color: rgba(255, 154, 30, 0.406);
 }
 #root {
   display: grid;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  grid-template-columns: 160px 3fr 3fr 3fr 160px;
-  grid-template-rows: 1fr 1fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 0.7fr 1fr 2fr 2fr 1fr 0.7fr;
+  grid-template-rows: 0.5fr repeat(5, 1fr);
   font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -30,41 +33,24 @@ input:focus {
 #main-btncontainer {
   grid-column: 5 / 6;
   grid-row: 2 / 3;
-  float: left;
+  justify-self: end;
+  background: none;
 }
 .main-btn {
-  float: left;
-  margin-right: 15px;
+  margin-left: 30px;
   border: none;
-  font-size: 13px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  background: transparent;
-}
-.main-btn:hover {
-  animation-name: btn-hover;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}
-@keyframes btn-hover {
-  from {
-    color: black;
-  }
-  to {
-    color: rgb(255, 154, 30);
-  }
+  font-weight: 400;
+  font-size: 15px;
+  color: #424242;
+  background: none;
 }
 /* title style */
 #main-subcontainer {
-  grid-column: 2 / 5;
-  grid-row: 4 / 5;
+  grid-column: 3 / 5;
+  grid-row: 3 / 5;
+  align-self: center;
+  justify-self: center;
   text-align: center;
-  vertical-align: center;
-}
-#title {
-  font-weight: 700;
-  font-size: 3rem;
-  margin: 0;
 }
 #subtitle {
   font-weight: 300;
@@ -86,50 +72,71 @@ ul {
   height: 500px;
   top: 50%;
   left: 50%;
-  grid-column: 2 / 5;
-  grid-row: 4 / 5;
-  z-index: 1000;
   margin: -250px 0 0 -225px;
-  background-color: white;
+  background-color: #fff;
+  z-index: 1000;
 }
 #join-title {
   text-align: center;
   margin: 40px;
   font-size: 20px;
 }
-.join-input-list {
+.join-list-container {
+  display: flex;
   width: 400px;
-  padding: 0;
-  display: block;
+  height: 300px;
   margin: 0 auto;
 }
-.join-input {
-  height: 30px;
-  border: 1px solid red;
-  width: 260px;
-  text-align: left;
-  border-radius: 5px;
+.join-span-container {
+  flex-basis: 66px;
 }
-.join-input-id {
-  height: 30px;
-  border: 1px solid red;
-  width: 260px;
+.join-input-container {
+  width: 310px;
+  margin-left: 20px;
+}
+.join-subtitle {
+  font-size: 11px;
+  width: 66px;
+  line-height: 30px;
+  margin-top: 10px;
   text-align: left;
+  border: 1px solid #fff;
+}
+#join-input {
+  line-height: 30px;
+  border: 1px solid #616161;
+  float: left;
+  width: 310px;
   border-radius: 5px;
+  text-align: left;
+  margin-top: 10px;
+  padding-left: 8px;
 }
 .join-input::placeholder {
-  padding-left: 5px;
+  /* padding-left: 5px; */
+  font-size: 11px;
+}
+#radio-container {
+  width: 310px;
+  margin-top: 10px;
+  line-height: 30px;
+  float: left;
+  text-align: left;
+}
+label {
   font-size: 12px;
+  margin-left: 35px;
+  /* text-align: left;s */
 }
 .join-btn {
   margin: 0 auto;
   display: block;
-  width: 380px;
-  margin-top: 20px;
+  width: 400px;
+  margin-top: 30px;
   height: 30px;
   border: none;
   padding: 0;
-  background-color: #ffcc80;
+  background-color: #616161;
   color: #fff;
   border-radius: 5px;
 }
@@ -140,32 +147,6 @@ ul {
   border: none;
   margin: 5px;
 }
-label {
-  font-size: 12px;
-  margin-left: 35px;
-  /* text-align: left;s */
-}
-#radio-container {
-  /* float: left; */
-  width: 380px;
-  text-align: left;
-  vertical-align: middle;
-  width: 260px;
-}
-.join-each-input {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.join-subtitle {
-  font-size: 11px;
-  width: 64px;
-  height: 30px;
-  text-align: left;
-  display: table-cell;
-  vertical-align: middle;
-  float: left;
-}
-
 /* 로그인 style */
 #login-container {
   position: absolute;
@@ -186,10 +167,11 @@ label {
 #login-btn {
   width: 300px;
   margin-top: 20px;
-  height: 28px;
+  height: 30px;
   border: none;
+  border-radius: 5px;
   padding: 0;
-  background-color: #ffcc80;
+  background-color: #616161;
   vertical-align: middle;
   color: #fff;
 }
@@ -206,6 +188,7 @@ label {
 }
 .login-each-btn {
   width: 300px;
+  border-radius: 5px;
 }
 .login-input-list {
   text-align: center;
@@ -214,8 +197,8 @@ label {
 .login-input {
   width: 300px;
   height: 32px;
-  border: 1px solid #ffcc80;
-  /* background-color: rgb(174, 174, 174); */
+  border-radius: 5px;
+  border: 1px solid #ffb74d;
 }
 .login-input::placeholder {
   color: rgb(123, 123, 123);
@@ -234,49 +217,75 @@ label {
 }
 
 /* Animation */
+@keyframes fadeIn {
+  from {
+    background-color: #fff;
+  }
+  to {
+    background-color: rgba(253, 203, 110, 0.5);
+  }
+}
+@keyframes fadeOut {
+  from {
+    background-color: rgba(253, 203, 110, 0.5);
+  }
+  to {
+    background-color: #fff;
+  }
+}
+.main-btn:hover {
+  animation-name: btn-hover;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes btn-hover {
+  from {
+    color: black;
+  }
+  to {
+    color: #ffb74d;
+  }
+}
 #join-container {
   animation-name: open-modal;
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 @keyframes open-modal {
   from {
     opacity: 0;
-    margin: -280px 0px 0 -225px;
+    margin: -265px 0px 0 -225px;
   }
   to {
     opacity: 100%;
-    margin: -250px 0px 0 -225px;
+    margin: -250px 0 0 -225px;
   }
 }
 #login-container {
   animation-name: open-modal-login;
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 @keyframes open-modal-login {
   from {
     opacity: 0;
-    margin: -225px 0px 0 -200px;
+    margin: -190px 0px 0 -200px;
   }
   to {
     opacity: 100%;
     margin: -175px 0 0 -200px;
   }
 }
-#join-title,
-#login-title,
-.join-input-list,
-.login-input-list {
-  animation-name: open-modal-inner;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-}
-@keyframes open-modal-inner {
+@keyframes close-modal-login {
   from {
-    opacity: 0;
+    opacity: 100%;
+    /* margin: -175px 0 0 -200px; */
   }
   to {
-    opacity: 100%;
+    opacity: 0;
+    /* margin: -190px 0px 0 -200px; */
   }
 }

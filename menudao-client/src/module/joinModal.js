@@ -13,19 +13,6 @@ export const joindropModal = () => ({
   type: JOIN_DROP_MODAL,
 });
 /*
-	InitialState
-*/
-const initialState = {
-  joinStatus: {
-    joinShow: false,
-    joinElement: null,
-  },
-  loginStatus: {
-    loginShow: false,
-    loginElement: null,
-  },
-};
-/*
 	Reducer
 */
 export default function JoinReducer(state = initialState, action) {
