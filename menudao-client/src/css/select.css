@@ -1,0 +1,49 @@
+#common-container {
+
+}
+#weather-container {
+
+}
+.weather-icon {
+
+}
+.weather-local {
+
+}
+.weather-temp {
+
+}
+.mood-title {
+
+}
+#category-container {
+
+}
+#select-btn {
+
+}
+.fas {
+  width: 50px;
+  font-size: 50px;
+}
+.fa-grimace {
+  color: rgb(115, 116, 118);
+}
+.fa-frown {
+  color: rgb(135, 145, 156);
+}
+.fa-meh-blank {
+  color: rgb(136, 153, 176);
+}
+.fa-meh-rolling-eyes {
+  color: rgb(117, 147, 187);
+}
+.fa-smile {
+  color: rgb(79, 122, 175);
+}
+.fa-grin-beam {
+  color: rgb(42, 104, 180);
+}
+.fa-grin-hearts {
+  color: rgb(29, 118, 228);
+}
