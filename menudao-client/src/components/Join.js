@@ -1,5 +1,6 @@
 // 회원가입하는 모달창
 import React from "react";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
   checkUserId,
@@ -20,6 +21,24 @@ function Join({
   const Join_UserInfo = useSelector(
     (status) => status.validationReducer.userInfo
   );
+  const joinRequestHandler = function () {
+    axios
+      .post(
+        "http://localhost:4000/signup",
+        {  
+          user_id: Join_UserInfo.user_name,
+          user_name: Join_UserInfo.user_name,
+          user_password: Join_UserInfo.user_password,
+          user_sex: Join_UserInfo.user_sex,
+          user_birthday: Join_UserInfo.user_birthday,
+        },
+        { headers: { "Content-Type": "application/json" }, 
+        withCredentials: true }
+      )
+      .then((res) => {
+      })
+      .catch((err) => console.log(err));
+  }
   const isCorrectUserInfo = function (Join_UserInfo) {
     const valueArr = Object.values(Join_UserInfo);
     for (let value of valueArr) {
@@ -30,6 +49,7 @@ function Join({
     }
     alert("화원가입이 완료되었습니다");
     console.log("회원가입을 완료한 유저정보:", Join_UserInfo);
+    joinRequestHandler();
     LoginonShowModal();
     JoinonDropModal();
   };
