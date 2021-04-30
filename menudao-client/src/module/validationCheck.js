@@ -1,3 +1,5 @@
+import { initialState } from './initialState';
+
 /*
 	Types
 */
@@ -14,6 +16,11 @@ const CHECK_SAME_PW = "CHECK_SAME_PW";
 /*
 	Actions
 */
+const isRightId = function(str) {
+  const id = /^[A-Za-z][A-Za-z0-9]*$/
+
+  return id.test(str);
+};
 export const checkUserId = (userid) => ({
   type: CHECK_USER_ID,
   payload: userid,
@@ -31,34 +38,26 @@ export const checkSamePW = (samepw) => ({
   payload: samepw,
 });
 /*
-	InitialState
-*/
-const initialState = {
-  userId: '',
-  userBirth: '',
-  userPW: '',
-  checkPW: '',
-};
-/*
 	Reducer
 */
 // Main.js : join-input에 onchange 이벤트로 state를 입력값으로 변경한다.
-export function validationReduce(state = initialState, action) {
+export default function validationReducer(state = initialState, action) {
   switch (action.type) {
     case CHECK_USER_ID:
       // [유효성 검증 함수] 
       // 아이디 입력문자는 영어 또는 숫자만 가능
-      if(isRightId) {
+      const idInput = document.querySelector(".join-input-id");
+      if(isRightId(action.payload)) {
+        idInput.style.border = "1px solid blue";
         return {
           ...state,
+          userID: action.payload,
         }
+      }else {
+        console.log('id check2');
+        idInput.style.border = "1px solid red";
+        console.log('형식에 맞추어주세요.')
       }
-      
-      return {
-        ...state,
-        joinShow: true,
-        joinElement: document.querySelector("#join-container"),
-      };
     case CHECK_USER_BIRTH:
       console.log("join modal 닫기");
       return {
