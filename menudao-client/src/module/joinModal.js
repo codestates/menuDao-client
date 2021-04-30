@@ -1,3 +1,4 @@
+import { initialState } from "./initialState";
 /*
 	Types
 */
@@ -21,14 +22,19 @@ export default function JoinReducer(state = initialState, action) {
       console.log("join modal 열기");
       return {
         ...state,
-        joinShow: true,
-        joinElement: document.querySelector("#join-container"),
+        joinStatus: {
+          joinShow: true,
+          joinElement: document.querySelector("#join-container"),
+        },
       };
     case JOIN_DROP_MODAL:
       console.log("join modal 닫기");
       return {
         ...state,
-        joinShow: false,
+        joinStatus: {
+          joinShow: false,
+          joinElement: null,
+        },
       };
     default:
       return state;
