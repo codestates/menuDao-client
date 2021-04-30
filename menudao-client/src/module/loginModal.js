@@ -1,3 +1,4 @@
+import { initialState } from "./initialState";
 /*
 	Types
 */
@@ -13,19 +14,6 @@ export const logindropModal = () => ({
   type: LOGIN_DROP_MODAL,
 });
 /*
-	InitialState
-*/
-const initialState = {
-  joinStatus: {
-    joinShow: false,
-    joinElement: null,
-  },
-  loginStatus: {
-    loginShow: false,
-    loginElement: null,
-  },
-};
-/*
 	Reducer
 */
 export default function LoginReducer(state = initialState, action) {
@@ -34,14 +22,19 @@ export default function LoginReducer(state = initialState, action) {
       console.log("login modal 열기");
       return {
         ...state,
-        loginShow: true,
-        loginElement: document.querySelector("#login-container"),
+        loginStatus: {
+          loginShow: true,
+          loginElement: document.querySelector("#login-container"),
+        },
       };
     case LOGIN_DROP_MODAL:
       console.log("login modal 닫기");
       return {
         ...state,
-        loginShow: false,
+        loginStatus: {
+          loginShow: false,
+          loginElement: null,
+        },
       };
     default:
       return state;

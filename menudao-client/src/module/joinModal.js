@@ -1,3 +1,4 @@
+import { initialState } from "./initialState";
 /*
 	Types
 */
@@ -13,19 +14,6 @@ export const joindropModal = () => ({
   type: JOIN_DROP_MODAL,
 });
 /*
-	InitialState
-*/
-const initialState = {
-  joinStatus: {
-    joinShow: false,
-    joinElement: null,
-  },
-  loginStatus: {
-    loginShow: false,
-    loginElement: null,
-  },
-};
-/*
 	Reducer
 */
 export default function JoinReducer(state = initialState, action) {
@@ -34,14 +22,19 @@ export default function JoinReducer(state = initialState, action) {
       console.log("join modal 열기");
       return {
         ...state,
-        joinShow: true,
-        joinElement: document.querySelector("#join-container"),
+        joinStatus: {
+          joinShow: true,
+          joinElement: document.querySelector("#join-container"),
+        },
       };
     case JOIN_DROP_MODAL:
       console.log("join modal 닫기");
       return {
         ...state,
-        joinShow: false,
+        joinStatus: {
+          joinShow: false,
+          joinElement: null,
+        },
       };
     default:
       return state;
