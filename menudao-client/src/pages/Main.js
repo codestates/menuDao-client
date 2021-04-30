@@ -19,20 +19,21 @@ function Main() {
   // Modal 창이 실행돨 경우, 주변 바탕화면 색이 흐려진다
   const BackgroundGray = function () {
     const root = document.querySelector("#root");
-    root.style.background = "rgba(0, 0, 0, 0.6)";
+    root.style.animationName = "fadeIn";
+    root.style.cssText = "animation: fadeIn 0.6s; animation-fill-mode: forwards;"
   };
 
   // Modal창의 닫기 버튼을 눌렀을 경우, 다시 원래대로 바탕화면 색이 돌아온다
   const BackgroundWhite = function () {
     const root = document.querySelector("#root");
-    root.style.background = "#fff";
+    root.style.cssText = "animation: fadeOut 0.6s; animation-fill-mode: forwards;"
   };
 
   // 바탕화면 색이 흐려지는 동시에 메인 화면 오른쪽 상단의 버튼 2개도 함께 색상이 바뀐다
   const btnFontWhite = function () {
     const mainbtn = document.querySelectorAll(".main-btn");
     for (let btn of mainbtn) {
-      btn.style.background = "none";
+      // btn.style.background = "none";
       btn.style.color = "#fff";
     }
   };
@@ -41,8 +42,8 @@ function Main() {
   const btnFontBlack = function () {
     const mainbtn = document.querySelectorAll(".main-btn");
     for (let btn of mainbtn) {
-      btn.style.background = "#fff";
-      btn.style.color = "black";
+      // btn.style.background = "none";
+      btn.style.color = "#424242";
     }
   };
 
@@ -90,11 +91,11 @@ function Main() {
         </div>
       </div>
       <div id="main-subcontainer">
-        <h1 id="title"><img src="./Asset9.png"></img></h1>
+        <h1 id="title"><img src="./main-logo.png"></img></h1>
         <div id="subtitle">오늘 뭐 먹을까?</div>
       </div>
     </>
   );
 }
 
-export default Main;
+export default React.memo(Main);
