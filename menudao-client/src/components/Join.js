@@ -25,20 +25,21 @@ function Join({
     axios
       .post(
         "http://localhost:4000/signup",
-        {  
+        {
           user_id: Join_UserInfo.user_name,
           user_name: Join_UserInfo.user_name,
           user_password: Join_UserInfo.user_password,
           user_sex: Join_UserInfo.user_sex,
           user_birthday: Join_UserInfo.user_birthday,
         },
-        { headers: { "Content-Type": "application/json" }, 
-        withCredentials: true }
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
       )
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((err) => console.log(err));
-  }
+  };
   const isCorrectUserInfo = function (Join_UserInfo) {
     const valueArr = Object.values(Join_UserInfo);
     for (let value of valueArr) {
@@ -62,6 +63,7 @@ function Join({
             JoinonDropModal();
             BackgroundWhite();
             btnFontBlack();
+            console.log(Join_UserInfo);
           }}
         >
           X
