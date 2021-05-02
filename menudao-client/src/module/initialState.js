@@ -15,4 +15,8 @@ export const initialState = {
     user_password: "",
     userPWcheck: false,
   },
+  LoginState: {
+    isLogin: false,
+    userData: null,
+  },
 };
