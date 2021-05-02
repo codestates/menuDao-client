@@ -3,6 +3,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+//  마이페이지, 다이어리, 로그아웃 버튼 생성
+//  버튼 클릭하면 각각의 페이지로 이동 (history 사용하기)
 function Nav() {
   return (
     <>
