@@ -15,6 +15,7 @@ const CHECK_USER_ID = "CHECK_USER_ID";
 const CHECK_USER_BIRTH = "CHECK_USER_BIRTH";
 const CHECK_USER_PW = "CHECK_USER_PW";
 const CHECK_SAME_PW = "CHECK_SAME_PW";
+const RESET_USER_INFO = "RESET_USER_INFO";
 
 /*
 유효성 검사 함수
@@ -63,6 +64,11 @@ export const checkUserPW = (userpw) => ({
 export const checkSamePW = (samepw) => ({
   type: CHECK_SAME_PW,
   payload: samepw,
+});
+
+// 회원가입 도중, X버튼 클릭 시 임시저장된 회원정보 초기화
+export const resetuserInfo = () => ({
+  type: RESET_USER_INFO,
 });
 /*
 	Reducer
@@ -181,7 +187,19 @@ export default function validationReducer(state = initialState, action) {
           },
         };
       }
-
+    case RESET_USER_INFO:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          user_name: "",
+          user_sex: "",
+          user_id: "",
+          user_birthday: "",
+          user_password: "",
+          userPWcheck: false,
+        },
+      };
     default:
       return state;
   }

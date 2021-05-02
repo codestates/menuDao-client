@@ -4,6 +4,7 @@ import { initialState } from "./initialState";
 */
 const LOGIN_SHOW_MODAL = "LOGIN_SHOW_MODAL";
 const LOGIN_DROP_MODAL = "LOGIN_DROP_MODAL";
+const USER_LOGIN = "USER_LOGIN";
 /*
 	Actions
 */
@@ -12,6 +13,10 @@ export const loginshowModal = () => ({
 });
 export const logindropModal = () => ({
   type: LOGIN_DROP_MODAL,
+});
+export const userLogin = (accessToken) => ({
+  type: USER_LOGIN,
+  payload: accessToken,
 });
 /*
 	Reducer
@@ -35,6 +40,11 @@ export default function LoginReducer(state = initialState, action) {
           loginShow: false,
           loginElement: null,
         },
+      };
+    case USER_LOGIN:
+      return {
+        ...state,
+        accessToken: action.payload,
       };
     default:
       return state;
