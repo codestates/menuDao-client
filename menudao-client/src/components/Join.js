@@ -1,4 +1,5 @@
 // 회원가입하는 모달창
+import swal from "sweetalert";
 import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -45,11 +46,11 @@ function Join({
     const valueArr = Object.values(Join_UserInfo);
     for (let value of valueArr) {
       if (value === "" || value === false) {
-        alert("작성하신 회원가입 목록을 다시 한번 확인해주세요");
+        swal("회원가입 목록을 다시 작성해주세요", "", "warning");
         return;
       }
     }
-    alert("화원가입이 완료되었습니다");
+    swal("화원가입이 완료되었습니다", "", "success");
     console.log("회원가입을 완료한 유저정보:", Join_UserInfo);
     joinRequestHandler();
     LoginonShowModal();

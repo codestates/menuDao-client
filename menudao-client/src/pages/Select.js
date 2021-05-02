@@ -3,7 +3,7 @@ import React from "react";
 import "../css/select.css";
 import Nav from "../components/Nav";
 import UserSelect from "../components/UserSelect";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Select() {
   return (
