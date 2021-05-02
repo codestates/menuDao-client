@@ -1,4 +1,5 @@
 // 회원가입하는 모달창
+import swal from "sweetalert";
 import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +10,7 @@ import {
   checkSamePW,
   pushUserName,
   pushUserGender,
+  resetuserInfo,
 } from "../module/validationCheck";
 
 function Join({
@@ -26,7 +28,7 @@ function Join({
       .post(
         "http://localhost:4000/signup",
         {
-          user_id: Join_UserInfo.user_name,
+          user_id: Join_UserInfo.user_id,
           user_name: Join_UserInfo.user_name,
           user_password: Join_UserInfo.user_password,
           user_sex: Join_UserInfo.user_sex,
@@ -44,11 +46,11 @@ function Join({
     const valueArr = Object.values(Join_UserInfo);
     for (let value of valueArr) {
       if (value === "" || value === false) {
-        alert("작성하신 회원가입 목록을 다시 한번 확인해주세요");
+        swal("회원가입 목록을 다시 작성해주세요", "", "warning");
         return;
       }
     }
-    alert("화원가입이 완료되었습니다");
+    swal("화원가입이 완료되었습니다", "", "success");
     console.log("회원가입을 완료한 유저정보:", Join_UserInfo);
     joinRequestHandler();
     LoginonShowModal();
@@ -63,7 +65,7 @@ function Join({
             JoinonDropModal();
             BackgroundWhite();
             btnFontBlack();
-            console.log(Join_UserInfo);
+            dispatch(resetuserInfo());
           }}
         >
           X
@@ -105,7 +107,7 @@ function Join({
             <div id="radio-container">
               <label>
                 <input
-                  value="men"
+                  value="male"
                   name="gender"
                   type="radio"
                   className="join-gender"
@@ -117,7 +119,7 @@ function Join({
               </label>
               <label>
                 <input
-                  value="women"
+                  value="female"
                   name="gender"
                   type="radio"
                   className="join-gender"
@@ -152,7 +154,7 @@ function Join({
             isCorrectUserInfo(Join_UserInfo);
           }}
         >
-          회원가입
+          SIGN UP
         </button>
       </div>
     </>

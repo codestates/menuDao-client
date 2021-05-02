@@ -4,6 +4,7 @@ import { initialState } from "./initialState";
 */
 const JOIN_SHOW_MODAL = "JOIN_SHOW_MODAL";
 const JOIN_DROP_MODAL = "JOIN_DROP_MODAL";
+
 /*
 	Actions
 */
@@ -13,6 +14,7 @@ export const joinshowModal = () => ({
 export const joindropModal = () => ({
   type: JOIN_DROP_MODAL,
 });
+
 /*
 	Reducer
 */

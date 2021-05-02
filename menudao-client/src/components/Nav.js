@@ -3,10 +3,19 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+//  마이페이지, 다이어리, 로그아웃 버튼 생성
+//  버튼 클릭하면 각각의 페이지로 이동 (Redirect)
 function Nav() {
   return (
     <>
-      <h1>여기는 페이지 상단의 네비게이터임</h1>
+      <div id="nav-container">
+        <span id="logo">MenuDao</span>
+        <div id="nav-btn-container">
+          <button id="mypage_btn">마이 페이지</button>
+          <button id="diary_btn">다이어리</button>
+          <button id="logout_btn">Log out</button>
+        </div>
+      </div>
     </>
   );
 }

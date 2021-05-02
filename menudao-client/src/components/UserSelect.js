@@ -12,41 +12,72 @@ function UserSelect() {
       <div id="common-container">
         <div id="weather-container">
           <div className="weather-icon">
-            날씨 아이콘
+            <i className="fas fa-sun"></i>
           </div>
-          <div className="weather-local">
+          <div id='weather-info-container'>
+          <p className="weather-local">
             서울 특별시, 송파구
-          </div>
-          <div className="weather-temp">
-            23
+          </p>
+          <p className="weather-temp">
+            23°C
+          </p>
           </div>
         </div>
         <div id="select-container">
           {/* 기분 선택 */}
+          <div className="select-title">오늘의 기분을 선택해주세요.</div>
           <div id="mood-container">
-            <div className="mood-title">오늘의 기분을 선택해주세요.</div>
               <span>나쁨</span>
-              <input value="한식" name="gender" type="radio" className="food-category" value="1"></input><label className="category-label"><i className="fas fa-grimace"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="2"></input><label className="category-label"><i className="fas fa-frown"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="3"></input><label className="category-label"><i className="fas fa-meh-blank"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="4"></input><label className="category-label"><i className="fas fa-meh-rolling-eyes"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="5"></input><label className="category-label"><i className="fas fa-smile"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="6"></input><label className="category-label"><i className="fas fa-grin-beam"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="7"></input><label className="category-label"><i className="fas fa-grin-hearts"></i></label>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-grimace"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="1"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-frown"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="2"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-meh-blank"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="3"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-meh-rolling-eyes"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="4"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-smile"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="5"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-grin-beam"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="6"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-grin-hearts"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="7"></input>
+              </div>
               <span>좋음</span>
           </div>
           {/* 음식 대분류 선택 */}
+          <div className="select-title">선호하는 음식 종류를 선택해주세요.</div>
           <div id="category-container">
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">한식</label>
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">일식</label>
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">중식</label>
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">양식</label>
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">분식</label>
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">안주</label>
-            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">디저트</label>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/bibimbap.png"></img><label className="category-label">한식</label><input value="한식" name="gender" type="radio" className="food-category-1" value="한식"></input>
+            </div>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/nigiri.png"></img><label className="category-label">일식</label><input value="한식" name="gender" type="radio" className="food-category" value="한식"></input>
+            </div>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/chinese.png"></img><label className="category-label">중식</label><input value="한식" name="gender" type="radio" className="food-category" value="한식"></input>
+            </div>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/steak.png"></img><label className="category-label">양식</label><input value="한식" name="gender" type="radio" className="food-category" value="한식"></input>
+            </div>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/fishcake.png"></img><label className="category-label">분식</label><input value="한식" name="gender" type="radio" className="food-category" value="한식"></input>
+            </div>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/soju.png"></img><label className="category-label">안주</label><input value="한식" name="gender" type="radio" className="food-category" value="한식"></input>
+            </div>
+            <div className="checkboxgroup">
+              <img className="food-icon" src="./food_icon/macaron.png"></img><label className="category-label">디저트</label><input value="한식" name="gender" type="radio" className="food-category" value="한식"></input>
+            </div>
           </div>
         </div>
-        <button id="select-btn"></button>
+        <button id="select-btn">선택 완료</button>
       </div>
     </>
   )
