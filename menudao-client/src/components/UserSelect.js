@@ -26,13 +26,13 @@ function UserSelect() {
           <div id="mood-container">
             <div className="mood-title">오늘의 기분을 선택해주세요.</div>
               <span>나쁨</span>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-grimace"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-frown"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-meh-blank"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-meh-rolling-eyes"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-smile"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-grin-beam"></i></label>
-              <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label"><i class="fas fa-grin-hearts"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="1"></input><label className="category-label"><i className="fas fa-grimace"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="2"></input><label className="category-label"><i className="fas fa-frown"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="3"></input><label className="category-label"><i className="fas fa-meh-blank"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="4"></input><label className="category-label"><i className="fas fa-meh-rolling-eyes"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="5"></input><label className="category-label"><i className="fas fa-smile"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="6"></input><label className="category-label"><i className="fas fa-grin-beam"></i></label>
+              <input value="한식" name="gender" type="radio" className="food-category" value="7"></input><label className="category-label"><i className="fas fa-grin-hearts"></i></label>
               <span>좋음</span>
           </div>
           {/* 음식 대분류 선택 */}
@@ -41,6 +41,7 @@ function UserSelect() {
             <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">일식</label>
             <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">중식</label>
             <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">양식</label>
+            <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">분식</label>
             <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">안주</label>
             <input value="한식" name="gender" type="radio" className="food-category" value="한식"></input><label className="category-label">디저트</label>
           </div>
