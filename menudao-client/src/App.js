@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <Nav />
+      {/* <Nav /> */}
       <Switch>
         <Route exact path="/">
           <Main />
