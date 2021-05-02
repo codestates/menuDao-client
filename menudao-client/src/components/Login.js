@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 function Login({ LoginonDropModal, JoinonShowModal, BackgroundWhite, btnFontBlack }) 
 {
-  const [ID, setID] = useState('');
-  const [PW, setPW] = useState('');
+  const [user_id, setUserID] = useState('');
+  const [user_password, setUserPW] = useState('');
 
   const loginRequestHandler = function () {
     axios
       .post(
-        "https://localhost:4000/signin",
-        { ID, PW },
+        "http://localhost:4000/signin",
+        { user_id: user_id, user_password: user_password },
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       )
       .then((res) => {
@@ -38,10 +38,10 @@ function Login({ LoginonDropModal, JoinonShowModal, BackgroundWhite, btnFontBlac
         <div id="login-title">Log in</div>
         <ul className="login-input-list">
           <li className="login-each-input">
-            <input className="login-input" placeholder="ID" onChange={(e)=> {console.log(ID); setID(e.target.value)}}></input>
+            <input className="login-input" placeholder="ID" onChange={(e)=> {setUserID(e.target.value)}}></input>
           </li>
           <li className="login-each-input">
-            <input className="login-input" placeholder="비밀번호"  onChange={(e)=> { console.log(PW); setPW(e.target.value)}}></input>
+            <input className="login-input" placeholder="비밀번호"  onChange={(e)=> { setUserPW(e.target.value)}}></input>
           </li>
         </ul>
         <ul className="login-sub-btn">

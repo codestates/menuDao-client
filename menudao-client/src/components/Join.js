@@ -26,7 +26,7 @@ function Join({
       .post(
         "http://localhost:4000/signup",
         {
-          user_id: Join_UserInfo.user_name,
+          user_id: Join_UserInfo.user_id ,
           user_name: Join_UserInfo.user_name,
           user_password: Join_UserInfo.user_password,
           user_sex: Join_UserInfo.user_sex,
@@ -105,7 +105,7 @@ function Join({
             <div id="radio-container">
               <label>
                 <input
-                  value="men"
+                  value="male"
                   name="gender"
                   type="radio"
                   className="join-gender"
@@ -117,7 +117,7 @@ function Join({
               </label>
               <label>
                 <input
-                  value="women"
+                  value="female"
                   name="gender"
                   type="radio"
                   className="join-gender"
