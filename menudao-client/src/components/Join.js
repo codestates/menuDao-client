@@ -152,7 +152,7 @@ function Join({
             isCorrectUserInfo(Join_UserInfo);
           }}
         >
-          회원가입
+          SIGN UP
         </button>
       </div>
     </>
