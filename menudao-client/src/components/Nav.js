@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import "../css/nav.css";
 
 //  마이페이지, 다이어리, 로그아웃 버튼 생성 (axios 요청 총 3개 구현)
+//  initialState에 저장된 accessToken을 가지고 post요청을 보낸다
 //  버튼 클릭하면 각각의 페이지로 이동 (Redirect)
 function Nav() {
   const history = useHistory();
