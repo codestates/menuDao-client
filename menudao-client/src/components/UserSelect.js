@@ -20,92 +20,20 @@ function UserSelect() {
           {/* 기분 선택 */}
           <div className="select-title">오늘의 기분을 선택해주세요.</div>
           <div id="mood-container">
-            <span>나쁨</span>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-grimace"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="1"
-              ></input>
-            </div>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-frown"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="2"
-              ></input>
-            </div>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-meh-blank"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="3"
-              ></input>
-            </div>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-meh-rolling-eyes"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="4"
-              ></input>
-            </div>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-smile"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="5"
-              ></input>
-            </div>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-grin-beam"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="6"
-              ></input>
-            </div>
-            <div className="checkboxgroup">
-              <label className="category-label">
-                <i className="fas fa-grin-hearts"></i>
-              </label>
-              <input
-                value="한식"
-                name="gender"
-                type="radio"
-                className="food-category"
-                value="7"
-              ></input>
-            </div>
-            <span>좋음</span>
+              <span>나쁨</span>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-grimace"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="1"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-frown"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="2"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-smile"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="5"></input>
+              </div>
+              <div className="checkboxgroup">
+                <label className="category-label"><i className="fas fa-grin-hearts"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="7"></input>
+              </div>
+              <span>좋음</span>
           </div>
           {/* 음식 대분류 선택 */}
           <div className="select-title">선호하는 음식 종류를 선택해주세요.</div>
