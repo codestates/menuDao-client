@@ -27,9 +27,13 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
       .then((res) => {
         console.log("accessToken: ", res.data.accessToken);
         dispatch(userLogin(res.data.accessToken));
-        swal("로그인 성공", "", "success");
+        swal("로그인되었습니다", "", "success");
+        history.push("/select");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        swal("ID와 Password가 일치하지 않습니다", "", "error");
+      });
   };
   return (
     <>
@@ -81,7 +85,6 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
               id="login-btn"
               onClick={() => {
                 loginRequestHandler();
-                history.push("/select");
               }}
             >
               LOG IN

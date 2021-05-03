@@ -16,7 +16,7 @@ function UserSelect() {
   const [feeling, setfeeling] = useState("");
   const [temp, setTemp] = useState("");
   const [location, setLocation] = useState("");
-  const [icon, setIcon] = useState("");
+  const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -41,16 +41,14 @@ function UserSelect() {
               const iconcode = json.weather[0].icon;
               setIcon(iconcode);
               const weatherIcon = document.querySelector(".weather-icon-png");
-              const iconurl =
-                "http://openweathermap.org/img/w/" + iconcode + ".png";
-              if(weather === "눈") {
-                weatherIcon.setAttribute("src", './weather_icon/snowman.png'); 
-              }else if(weather === "비") {
-                weatherIcon.setAttribute("src", './weather_icon/raining.png'); 
-              }else if(weather === "흐림") {
-                weatherIcon.setAttribute("src", './weather_icon/clouds.png'); 
-              }else {
-                weatherIcon.setAttribute("src", './weather_icon/sun.png'); 
+              if (weather === "눈") {
+                weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
+              } else if (weather === "비") {
+                weatherIcon.setAttribute("src", "./weather_icon/raining.png");
+              } else if (weather === "흐림") {
+                weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
+              } else {
+                weatherIcon.setAttribute("src", "./weather_icon/sun.png");
               }
               WeathersValues();
             });
@@ -103,7 +101,7 @@ function UserSelect() {
       .post(
         "http://localhost:4000/menu-choice",
         {
-          // weather: weather,
+          weather: weather,
           big_choice_menu: big_choice_menu,
           feeling: feeling,
         },
@@ -115,17 +113,18 @@ function UserSelect() {
       .then((res) => {
         console.log(res.data);
         dispatch(pushFoodName(res.data.food_name));
-        swal("select 정보 전송 성공!", "", "success");
-        // 선택 완료 후, Recommend 페이지로 리디랙션한다
+        swal("선택한 정보 전송", "", "success");
+        history.push("/recommend");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
       <div id="common-container">
         <div id="weather-container">
           <div className="weather-icon">
-            {/* <i className="fas fa-sun"></i> */}
             <img className="weather-icon-png"></img>
           </div>
           <div id="weather-info-container">
@@ -299,8 +298,11 @@ function UserSelect() {
         <button
           id="select-btn"
           onClick={() => {
-            selectRequestHandler();
-            history.push("/recommend");
+            if (weather !== "" && big_choice_menu !== "" && feeling !== "") {
+              selectRequestHandler();
+            } else {
+              swal("모든 항목을 선택해주세요", "", "error");
+            }
           }}
         >
           SUBMIT
