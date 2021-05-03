@@ -10,4 +10,5 @@ export const initialState = {
     userPWcheck: false,
   },
   accessToken: "",
+  foodName: "",
 };

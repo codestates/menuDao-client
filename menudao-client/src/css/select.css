@@ -1,17 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 #root {
   color: #000;
+}
+span {
+  font-weight: 100;
 }
 #common-container {
   background-color: #fff;
   grid-column: 3 / 5;
+  width: 650px;
   grid-row: 3 / 9;
   text-align: center;
   border-radius: 5px;
   margin-top: 20px;
+  justify-self: center;
+
 }
 #select-container {
-  background-color: #ffe9b82a;
-  /* border: 0.5px solid #ffcc8077; */
+  /* background-color: #ffe9b82a; */
+  border: 0.5px solid #7979791d;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
@@ -24,9 +31,9 @@
     0 80px 80px rgba(152, 148, 143, 0.034);
 }
 #weather-container {
-  height: 180px;
+  height: 150px;
   display: flex;
-  background-color: #ffe9b82a;
+  border: 0.5px solid #7979791d;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
@@ -44,14 +51,12 @@
 }
 #mood-container {
   display: flex;
-  grid-row: 6 / 6;
-  padding: 15px;
-  height: 130px;
-  justify-content: space-between;
+  padding: 10px;
+  height: 110px;
+  justify-content: space-evenly;
 }
 #category-container {
   display: flex;
-  grid-row: 6 / 6;
   height: 130px;
   justify-content: center;
 }
@@ -64,7 +69,9 @@
   align-self: center;
 }
 .weather-icon-png {
-  width: 200px;
+  width: 100px;
+  opacity: 0.8;
+  justify-content: left;
 }
 .weather-local {
   text-align: left;
@@ -77,9 +84,10 @@
   font-size: 4rem;
 }
 .select-title {
+  margin-top: 10px;
   text-align: center;
-  font-size: 0.85rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 300;
 }
 .checkboxgroup {
   display: inline-block;
@@ -93,6 +101,20 @@
   margin: 0;
 }
 .checkboxgroup input {
+  text-align: center;
+}
+.checkboxgroup-1 {
+  display: inline-block;
+  text-align: center;
+  align-self: center;
+  margin: 15px;
+}
+.checkboxgroup-1 label {
+  display: block;
+  text-align: center;
+  margin: 0;
+}
+.checkboxgroup-1 {
   text-align: center;
 }
 span {
@@ -129,12 +151,23 @@ input[type='radio']:checked:after {
 #select-btn {
   width: 150px;
   vertical-align: middle;
-  background-color: #ffd54f;
+  background-color:  #616161;
+  color: #fff;
   border-radius: 5px;
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-weight: 400;
+  font-size: 0.7rem;
   padding: 8px;
+  margin-top: 10px;
   border: none;
+  box-shadow: 0px 8px 15px rgba(63, 63, 63, 0.1);
+  transition: all 0.3s ease 0s;
+  letter-spacing: 2.5px;
+}
+#select-btn:hover {
+  background-color: #ffa726;
+  box-shadow: 0px 15px 20px rgba(255, 206, 72, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
 }
 .fas {
   /* width: 30px; */

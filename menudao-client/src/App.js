@@ -1,6 +1,9 @@
 import "./App.css";
 import Main from "./pages/Main";
 import Select from "./pages/Select";
+import Recommend from "./pages/Recommend";
+import Mypage from "./pages/Mypage";
+import Diarylist from "./pages/Diaries";
 import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -20,6 +23,9 @@ function App() {
         <Switch>
           <Route path="/main" render={() => <Main />} />
           <Route path="/select" render={() => <Select />} />
+          <Route path="/recommend" render={() => <Recommend />} />
+          <Route path="/mypage" render={() => <Mypage />} />
+          <Route path="/diarylist" render={() => <Diarylist />} />
           <Route
             path="/"
             render={() => {

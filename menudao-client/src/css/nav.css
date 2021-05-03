@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 #nav-container {
   grid-column: 2 / 6;
   grid-row: 2 / 3;
   display: flex;
 }
 #nav-btn-container {
-  flex-basis: 40%;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  flex-basis: 50%;
   text-align: right;
   align-self: center;
 }
@@ -15,8 +18,13 @@
   font-size: 0.8rem;
   color: #424242;
   background: none;
+  letter-spacing: 1.5px;
+  font-family: 'Questrial', sans-serif;
 }
 #logo {
+  cursor: pointer;
+  grid-column-start: 2;
+  grid-column-end: 3;
   flex-basis: 70%;
 }
 .nav-logo {

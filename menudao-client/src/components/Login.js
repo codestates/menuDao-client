@@ -3,11 +3,13 @@ import swal from "sweetalert";
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { userLogin } from "../module/loginModal";
-import { Redirect } from "react-router-dom";
 
 function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const [user_id, setUserID] = useState("");
   const [user_password, setUserPW] = useState("");
@@ -25,10 +27,13 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
       .then((res) => {
         console.log("accessToken: ", res.data.accessToken);
         dispatch(userLogin(res.data.accessToken));
-        swal("로그인 성공", "", "success");
-        return <Redirect to="/select" />;
+        swal("로그인되었습니다", "", "success");
+        history.push("/select");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        swal("ID와 Password가 일치하지 않습니다", "", "error");
+      });
   };
   return (
     <>
