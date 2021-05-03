@@ -11,9 +11,9 @@ function Nav() {
       <div id="nav-container">
         <span id="logo"><img className="nav-logo" src="./main-logo.png"></img></span>
         <div id="nav-btn-container">
-          <button id="mypage_btn">My page</button>
-          <button id="diary_btn">Diary</button>
-          <button id="logout_btn">Log out</button>
+          <button id="mypage_btn">MY PAGE</button>
+          <button id="diary_btn">DIARY</button>
+          <button id="logout_btn">LOGOUT</button>
         </div>
       </div>
     </>

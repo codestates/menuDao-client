@@ -4,7 +4,9 @@
   display: flex;
 }
 #nav-btn-container {
-  flex-basis: 40%;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  flex-basis: 50%;
   text-align: right;
   align-self: center;
 }
@@ -12,11 +14,15 @@
   margin-left: 30px;
   border: none;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #424242;
   background: none;
+  letter-spacing: 1.5px;
 }
 #logo {
+  cursor: pointer;
+  grid-column-start: 2;
+  grid-column-end: 3;
   flex-basis: 70%;
 }
 .nav-logo {
