@@ -47,7 +47,7 @@ function Login({
             btnFontBlack();
           }}
         >
-          X
+          <i class="far fa-times-circle"></i>
         </button>
         <div id="login-title">Log in</div>
         <ul className="login-input-list">

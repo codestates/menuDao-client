@@ -68,7 +68,7 @@ function Join({
             dispatch(resetuserInfo());
           }}
         >
-          X
+          <i class="far fa-times-circle"></i>
         </button>
         <div id="join-title">Join</div>
         <div className="join-list-container">
