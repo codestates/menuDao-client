@@ -149,9 +149,20 @@ label {
   height: 30px;
   border: none;
   padding: 0;
-  background-color: #ffb74d;
+  background-color:  #616161;
   color: #fff;
+  font-weight: 400;
+  font-size: 0.7rem;
   border-radius: 5px;
+  box-shadow: 0px 8px 15px rgba(63, 63, 63, 0.1);
+  transition: all 0.3s ease 0s;
+  letter-spacing: 2.5px;
+}
+.join-btn:hover {
+  background-color: #ffa726;
+  box-shadow: 0px 15px 20px rgba(255, 206, 72, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
 }
 .join-close-btn {
   float: right;
@@ -185,9 +196,20 @@ label {
   border: none;
   border-radius: 5px;
   padding: 0;
-  background-color: #ffb74d ;
+  background-color:  #616161;
   vertical-align: middle;
   color: #fff;
+  font-weight: 400;
+  font-size: 0.7rem;
+  box-shadow: 0px 8px 15px rgba(63, 63, 63, 0.1);
+  transition: all 0.3s ease 0s;
+  letter-spacing: 2.5px;
+}
+#login-btn:hover {
+  background-color: #ffa726;
+  box-shadow: 0px 15px 20px rgba(255, 206, 72, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
 }
 #login-to-join {
   background-color: #fff;
@@ -212,6 +234,7 @@ label {
   width: 300px;
   height: 32px;
   border-radius: 5px;
+  font-size: 9px;
   border: 1px solid #ffb74d;
 }
 .login-input::placeholder {
