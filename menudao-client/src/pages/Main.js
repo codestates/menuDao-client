@@ -78,7 +78,7 @@ function Main() {
       </div>
       <div id="main-subcontainer">
         <h1 id="title">
-          <img src="./main-logo.png"></img>
+          <img src="./main-logo.png" alt="logo-img"></img>
         </h1>
         <div id="subtitle">오늘 뭐 먹을까?</div>
       </div>
