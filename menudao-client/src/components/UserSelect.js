@@ -137,7 +137,7 @@ function UserSelect() {
           <div className="select-title">오늘의 기분을 선택해주세요.</div>
           <div id="mood-container">
             <span>나쁨</span>
-            <div className="checkboxgroup">
+            <div className="checkboxgroup-1">
               <label className="category-label">
                 <i className="fas fa-grimace"></i>
               </label>
@@ -147,11 +147,11 @@ function UserSelect() {
                 }}
                 name="gender"
                 type="radio"
-                className="food-category"
+                className="mood-category"
                 value="나쁨"
               ></input>
             </div>
-            <div className="checkboxgroup">
+            <div className="checkboxgroup-1">
               <label className="category-label">
                 <i className="fas fa-frown"></i>
               </label>
@@ -161,11 +161,11 @@ function UserSelect() {
                 }}
                 name="gender"
                 type="radio"
-                className="food-category"
+                className="mood-category"
                 value="조금나쁨"
               ></input>
             </div>
-            <div className="checkboxgroup">
+            <div className="checkboxgroup-1">
               <label className="category-label">
                 <i className="fas fa-smile"></i>
               </label>
@@ -175,11 +175,11 @@ function UserSelect() {
                 }}
                 name="gender"
                 type="radio"
-                className="food-category"
+                className="mood-category"
                 value="평범"
               ></input>
             </div>
-            <div className="checkboxgroup">
+            <div className="checkboxgroup-1">
               <label className="category-label">
                 <i className="fas fa-grin-hearts"></i>
               </label>
@@ -189,7 +189,7 @@ function UserSelect() {
                 }}
                 name="gender"
                 type="radio"
-                className="food-category"
+                className="mood-category"
                 value="좋음"
               ></input>
             </div>
@@ -210,9 +210,9 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="한식"
-                name="gender"
+                name="food"
                 type="radio"
-                className="food-category-1"
+                className="food-category"
               ></input>
             </div>
             <div className="checkboxgroup">
@@ -223,7 +223,7 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="일식"
-                name="gender"
+                name="food"
                 type="radio"
                 className="food-category"
               ></input>
@@ -236,7 +236,7 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="중식"
-                name="gender"
+                name="food"
                 type="radio"
                 className="food-category"
               ></input>
@@ -249,7 +249,7 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="양식"
-                name="gender"
+                name="food"
                 type="radio"
                 className="food-category"
               ></input>
@@ -262,7 +262,7 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="분식"
-                name="gender"
+                name="food"
                 type="radio"
                 className="food-category"
               ></input>
@@ -275,7 +275,7 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="안주"
-                name="gender"
+                name="food"
                 type="radio"
                 className="food-category"
               ></input>
@@ -288,7 +288,7 @@ function UserSelect() {
                   setBigMenu(e.target.value);
                 }}
                 value="디저트"
-                name="gender"
+                name="food"
                 type="radio"
                 className="food-category"
               ></input>
