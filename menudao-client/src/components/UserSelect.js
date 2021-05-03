@@ -1,5 +1,5 @@
 // 기분이랑 음식 대분류 선텍하는 컨테이너
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 function UserSelect() {
@@ -30,7 +30,7 @@ function UserSelect() {
               const iconcode = json.weather[0].icon;
               const weatherIcon = document.querySelector('.weather-icon-png');
               const iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-              weatherIcon.setAttribute('src', iconurl);
+              weatherIcon.setAttribute('src', './weather_icon/clouds.png');
             });
       }, function(error) {
         console.error(error);
@@ -44,13 +44,14 @@ function UserSelect() {
       // Seoul 37.5665° N, 126.9780° E
     }
   }
-  getLocation();
+  useEffect(() => getLocation(), [temp, location]); // 리렌더링 방지.
+
   const selectRequestHandler = function () {
     axios
       .post(
         "http://localhost:4000/menu-choice",
         {
-          weather: weather,
+          // weather: weather,
           big_choice_menu: big_choice_menu,
           feeling: feeling,
         },
@@ -179,7 +180,7 @@ function UserSelect() {
             </div>
           </div>
         </div>
-        <button id="select-btn">선택 완료</button>
+        <button id="select-btn">SUBMIT</button>
       </div>
     </>
   );
