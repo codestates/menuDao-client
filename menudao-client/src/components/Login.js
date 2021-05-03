@@ -40,7 +40,7 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
             turnOffModal_CSS();
           }}
         >
-          <i class="far fa-times-circle"></i>
+          <i className="far fa-times-circle"></i>
         </button>
         <div id="login-title">Log in</div>
         <ul className="login-input-list">

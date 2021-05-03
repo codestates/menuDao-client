@@ -64,7 +64,7 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
             dispatch(resetuserInfo());
           }}
         >
-          <i class="far fa-times-circle"></i>
+          <i className="far fa-times-circle"></i>
         </button>
         <div id="join-title">Join</div>
         <div className="join-list-container">
