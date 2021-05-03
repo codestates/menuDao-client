@@ -1,54 +1,37 @@
 // 접속 시 메인 화면
-import React from "react";
+import React, { useState } from "react";
 import Login from "../components/Login";
-import { useSelector, useDispatch } from "react-redux";
 import Join from "../components/Join";
-import { joinshowModal, joindropModal } from "../module/joinModal";
-import { loginshowModal, logindropModal } from "../module/loginModal";
 
+// 굳이 joinModal 과 loginModal Reducer를 구현해야하나??? -> Hook을 이용하여 true,false 값으로 하면 되지 않을까?
+// Main.js을 간소화하고 Nav.js에서 조건부 렌더링하면 좋을것 같다.
+// 그럼 accessToken로 Nav.js에서 조건을 걸어서 랜더랑 하면 될것 같다
 function Main() {
-  const dispatch = useDispatch();
-  const Joinshow = useSelector(
-    (state) => state.JoinReducer.joinStatus.joinShow
-  );
-  const Loginshow = useSelector(
-    (state) => state.LoginReducer.loginStatus.loginShow
-  );
+  // Modal 창을 On,Off 상태값
+  const [JoinModal, setJoinModal] = useState(false);
+  const [LoginModal, setLoginModal] = useState(false);
 
-  const JoinonShowModal = () => dispatch(joinshowModal());
-  const JoinonDropModal = () => dispatch(joindropModal());
-  const LoginonShowModal = () => dispatch(loginshowModal());
-  const LoginonDropModal = () => dispatch(logindropModal());
-
-  // Modal 창이 실행돨 경우, 주변 바탕화면 색이 흐려진다
-  const BackgroundGray = function () {
+  // Modal 창을 켰을 경우, 주변 바탕화면 색이 흐려지면서 메인 화면 오른쪽 상단의 버튼 2개도 함께 색상이 바뀐다
+  const turnOnModal_CSS = function () {
     const root = document.querySelector("#root");
     root.style.animationName = "fadeIn";
     root.style.cssText =
       "animation: fadeIn 0.6s; animation-fill-mode: forwards;";
-  };
 
-  // Modal창의 닫기 버튼을 눌렀을 경우, 다시 원래대로 바탕화면 색이 돌아온다
-  const BackgroundWhite = function () {
-    const root = document.querySelector("#root");
-    root.style.cssText =
-      "animation: fadeOut 0.6s; animation-fill-mode: forwards;";
-  };
-
-  // 바탕화면 색이 흐려지는 동시에 메인 화면 오른쪽 상단의 버튼 2개도 함께 색상이 바뀐다
-  const btnFontWhite = function () {
     const mainbtn = document.querySelectorAll(".main-btn");
     for (let btn of mainbtn) {
-      // btn.style.background = "none";
       btn.style.color = "#fff";
     }
   };
 
-  // Modal 창 닫기 버튼을 누르면 메인 화면 버튼들도 다시 원래대로 색상이 돌아온다
-  const btnFontBlack = function () {
+  // Modal창의 닫기 버튼을 눌렀을 경우, 바탕화면 색과 메인 화면 버튼들이 원래 색상으로 돌아온다
+  const turnOffModal_CSS = function () {
+    const root = document.querySelector("#root");
+    root.style.cssText =
+      "animation: fadeOut 0.6s; animation-fill-mode: forwards;";
+
     const mainbtn = document.querySelectorAll(".main-btn");
     for (let btn of mainbtn) {
-      // btn.style.background = "none";
       btn.style.color = "#424242";
     }
   };
@@ -60,46 +43,42 @@ function Main() {
           <button
             className="main-btn"
             onClick={() => {
-              JoinonShowModal();
-              LoginonDropModal();
-              BackgroundGray();
-              btnFontWhite();
+              setJoinModal(true);
+              setLoginModal(false);
+              turnOnModal_CSS();
             }}
           >
             Join
           </button>
-          {Joinshow && (
+          {JoinModal && (
             <Join
-              JoinonDropModal={JoinonDropModal}
-              BackgroundWhite={BackgroundWhite}
-              btnFontBlack={btnFontBlack}
-              LoginonShowModal={LoginonShowModal}
+              setJoinModal={setJoinModal}
+              setLoginModal={setLoginModal}
+              turnOffModal_CSS={turnOffModal_CSS}
             />
           )}
           <button
             className="main-btn"
             onClick={() => {
-              LoginonShowModal();
-              JoinonDropModal();
-              BackgroundGray();
-              btnFontWhite();
+              setLoginModal(true);
+              setJoinModal(false);
+              turnOnModal_CSS();
             }}
           >
             Login
           </button>
-          {Loginshow && (
+          {LoginModal && (
             <Login
-              BackgroundWhite={BackgroundWhite}
-              LoginonDropModal={LoginonDropModal}
-              JoinonShowModal={JoinonShowModal}
-              btnFontBlack={btnFontBlack}
+              setLoginModal={setLoginModal}
+              setJoinModal={setJoinModal}
+              turnOffModal_CSS={turnOffModal_CSS}
             />
           )}
         </div>
       </div>
       <div id="main-subcontainer">
         <h1 id="title">
-          <img src="./main-logo.png"></img>
+          <img src="./main-logo.png" alt="logo-img"></img>
         </h1>
         <div id="subtitle">오늘 뭐 먹을까?</div>
       </div>
