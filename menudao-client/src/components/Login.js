@@ -3,11 +3,13 @@ import swal from "sweetalert";
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { userLogin } from "../module/loginModal";
-import { Redirect } from "react-router-dom";
 
 function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const [user_id, setUserID] = useState("");
   const [user_password, setUserPW] = useState("");
@@ -26,7 +28,6 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
         console.log("accessToken: ", res.data.accessToken);
         dispatch(userLogin(res.data.accessToken));
         swal("로그인 성공", "", "success");
-        return <Redirect to="/select" />;
       })
       .catch((err) => console.log(err));
   };
@@ -80,6 +81,7 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
               id="login-btn"
               onClick={() => {
                 loginRequestHandler();
+                history.push("/select");
               }}
             >
               LOG IN
