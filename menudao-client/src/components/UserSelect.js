@@ -25,7 +25,7 @@ function UserSelect() {
               const temparature = json.main.temp;  //온도
               setTemp(temparature);
               const place = json.name;   // 사용자 위치
-              setLocation(place);
+              setLocation(place.toUpperCase());
               console.log(json);
               const iconcode = json.weather[0].icon;
               const weatherIcon = document.querySelector('.weather-icon-png');
