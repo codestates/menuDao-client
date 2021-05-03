@@ -1,18 +1,12 @@
 // 메인화면에서 로그인 버튼 클릭 시 모달창 생성
 import swal from "sweetalert";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../module/loginModal";
 import { Redirect } from "react-router-dom";
 
-function Login({
-  LoginonDropModal,
-  JoinonShowModal,
-  BackgroundWhite,
-  btnFontBlack,
-}) {
+function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
   const dispatch = useDispatch();
 
   const [user_id, setUserID] = useState("");
@@ -42,9 +36,8 @@ function Login({
         <button
           className="login-close-btn"
           onClick={() => {
-            LoginonDropModal();
-            BackgroundWhite();
-            btnFontBlack();
+            setLoginModal(false);
+            turnOffModal_CSS();
           }}
         >
           X
@@ -75,8 +68,8 @@ function Login({
             <button
               id="login-to-join"
               onClick={() => {
-                JoinonShowModal();
-                LoginonDropModal();
+                setJoinModal(true);
+                setLoginModal(false);
               }}
             >
               아직 계정이 없으신가요?

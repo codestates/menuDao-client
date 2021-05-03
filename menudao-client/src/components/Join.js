@@ -13,12 +13,7 @@ import {
   resetuserInfo,
 } from "../module/validationCheck";
 
-function Join({
-  JoinonDropModal,
-  LoginonShowModal,
-  BackgroundWhite,
-  btnFontBlack,
-}) {
+function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
   const dispatch = useDispatch();
   const Join_UserInfo = useSelector(
     (status) => status.validationReducer.userInfo
@@ -42,6 +37,7 @@ function Join({
       .then((res) => {})
       .catch((err) => console.log(err));
   };
+
   const isCorrectUserInfo = function (Join_UserInfo) {
     const valueArr = Object.values(Join_UserInfo);
     for (let value of valueArr) {
@@ -53,8 +49,9 @@ function Join({
     swal("화원가입이 완료되었습니다", "", "success");
     console.log("회원가입을 완료한 유저정보:", Join_UserInfo);
     joinRequestHandler();
-    LoginonShowModal();
-    JoinonDropModal();
+    setLoginModal(true);
+    setJoinModal(false);
+    dispatch(resetuserInfo());
   };
   return (
     <>
@@ -62,9 +59,8 @@ function Join({
         <button
           className="join-close-btn"
           onClick={() => {
-            JoinonDropModal();
-            BackgroundWhite();
-            btnFontBlack();
+            setJoinModal(false);
+            turnOffModal_CSS();
             dispatch(resetuserInfo());
           }}
         >
