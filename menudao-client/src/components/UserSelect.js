@@ -35,16 +35,7 @@ function UserSelect() {
                 <label className="category-label"><i className="fas fa-frown"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="2"></input>
               </div>
               <div className="checkboxgroup">
-                <label className="category-label"><i className="fas fa-meh-blank"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="3"></input>
-              </div>
-              <div className="checkboxgroup">
-                <label className="category-label"><i className="fas fa-meh-rolling-eyes"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="4"></input>
-              </div>
-              <div className="checkboxgroup">
                 <label className="category-label"><i className="fas fa-smile"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="5"></input>
-              </div>
-              <div className="checkboxgroup">
-                <label className="category-label"><i className="fas fa-grin-beam"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="6"></input>
               </div>
               <div className="checkboxgroup">
                 <label className="category-label"><i className="fas fa-grin-hearts"></i></label><input value="한식" name="gender" type="radio" className="food-category" value="7"></input>

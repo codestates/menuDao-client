@@ -1,5 +1,4 @@
 #root {
-  /* background-color: #ffe082; */
   color: #424242;
 }
 #common-container {
@@ -45,7 +44,7 @@
   text-align: left;
   font-weight: 100;
   align-self: center;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 .select-title {
   text-align: center;
@@ -107,7 +106,7 @@ input[type='radio']:checked:after {
   font-size: 35px;
 }
 .fa-sun {
-  font-size: 120px;
+  font-size: 100px;
 }
 .fa-grimace {
   color: rgb(165, 155, 148);
