@@ -1,18 +1,24 @@
 import { initialState } from "./initialState";
 
-const PUSH_FOOD_NAME = "PUSH_FOOD_NAME";
+const PUSH_FOOD_INFO = "PUSH_FOOD_INFO";
 
-export const pushFoodName = (foodname) => ({
-  type: PUSH_FOOD_NAME,
-  payload: foodname,
+export const pushFoodInfo = (food_name, food_category) => ({
+  type: PUSH_FOOD_INFO,
+  payload: {
+    food_name: food_name,
+    food_category: food_category,
+  },
 });
 
-export default function foodNameReducer(state = initialState, action) {
+export default function foodInfoReducer(state = initialState, action) {
   switch (action.type) {
-    case PUSH_FOOD_NAME:
+    case PUSH_FOOD_INFO:
       return {
         ...state,
-        foodName: action.payload,
+        foodInfo: {
+          food_name: action.payload.food_name,
+          food_category: action.payload.food_category,
+        },
       };
     default:
       return state;

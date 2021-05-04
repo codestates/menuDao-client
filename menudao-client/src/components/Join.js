@@ -34,8 +34,15 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
           withCredentials: true,
         }
       )
-      .then((res) => {})
-      .catch((err) => console.log(err));
+      .then((res) => {
+        swal("화원가입이 완료되었습니다", "", "success");
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.status === 409) {
+          swal("중복된 ID 입니다", "", "error");
+        }
+      });
   };
 
   const isCorrectUserInfo = function (Join_UserInfo) {
@@ -46,9 +53,8 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
         return;
       }
     }
-    swal("화원가입이 완료되었습니다", "", "success");
-    console.log("회원가입을 완료한 유저정보:", Join_UserInfo);
     joinRequestHandler();
+    console.log("회원가입을 완료한 유저정보:", Join_UserInfo);
     setLoginModal(true);
     setJoinModal(false);
     dispatch(resetuserInfo());
