@@ -2,13 +2,9 @@
 import swal from "sweetalert";
 import React, { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { userLogin } from "../module/loginModal";
 
 function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
-  const dispatch = useDispatch();
-
   const history = useHistory();
 
   const [user_id, setUserID] = useState("");
@@ -25,9 +21,9 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
         }
       )
       .then((res) => {
-        console.log("accessToken: ", res.cookie.accessToken);
-        dispatch(userLogin(res.cookie.accessToken));
         swal("로그인되었습니다", "", "success");
+        console.log("cookie:", document.cookie);
+        turnOffModal_CSS();
         history.push("/select");
       })
       .catch((err) => {
@@ -84,7 +80,6 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
             <button
               id="login-btn"
               onClick={() => {
-                turnOffModal_CSS();
                 loginRequestHandler();
               }}
             >

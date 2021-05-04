@@ -9,7 +9,6 @@ export const initialState = {
     user_password: "",
     userPWcheck: false,
   },
-  accessToken: "",
 
   foodInfo: {
     food_name: "",

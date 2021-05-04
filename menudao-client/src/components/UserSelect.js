@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { pushFoodInfo } from "../module/RecommendFood";
 import { pushWeatherInfo } from "../module/WeatherInfo";
-import "../css/select.css"
+import "../css/select.css";
 
 function UserSelect() {
   const dispatch = useDispatch();
@@ -19,8 +19,9 @@ function UserSelect() {
   const [temp, setTemp] = useState("");
   const [location, setLocation] = useState("");
   const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
-  console.log("cookie:", document.cookie)
-  const getLocation = () => {
+  const [loading, setLoading] = useState(true);
+
+  const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async function (position) {
@@ -29,7 +30,7 @@ function UserSelect() {
           const lon = position.coords.longitude;
           const API_KEY = "4d8822288b7fb34e914b976fab096207";
           await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API_KEY}&units=metric`
           )
             .then(function (response) {
               return response.json();
@@ -43,15 +44,18 @@ function UserSelect() {
               const iconcode = json.weather[0].icon; //날씨 아이콘 code
               setIcon(iconcode);
               WeathersValues();
+              setLoading(false);
+            })
+            .then(function () {
               const weatherIcon = document.querySelector(".weather-icon-png");
-              if (weather === "눈") {
-                weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
-              } else if (weather === "비") {
-                weatherIcon.setAttribute("src", "./weather_icon/raining.png");
+              if (weather === "맑음") {
+                weatherIcon.setAttribute("src", "./weather_icon/sun.png");
               } else if (weather === "흐림") {
                 weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
+              } else if (weather === "비") {
+                weatherIcon.setAttribute("src", "./weather_icon/raining.png");
               } else {
-                weatherIcon.setAttribute("src", "./weather_icon/sun.png");
+                weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
               }
             });
         },
@@ -70,9 +74,8 @@ function UserSelect() {
     }
   };
   // Rerendering 방지
-  useEffect(() => getLocation());
-
-  const WeathersValues = () => {
+  useEffect(() => getLocation(), [weather]);
+  const WeathersValues = function () {
     if (icon === "13d" || icon === "13n") {
       setWeather("눈");
     } else if (
@@ -121,10 +124,6 @@ function UserSelect() {
       })
       .catch((err) => {
         console.log(err);
-        if (err.status === 401) {
-          swal("로그인 세션이 만료되었습니다", "", "error");
-          history.push("/main");
-        }
       });
   };
   return (
@@ -132,12 +131,18 @@ function UserSelect() {
       <div id="common-select-container">
         <div id="weather-container">
           <div className="weather-icon">
-            <img className="weather-icon-png"></img>
+            {loading ? (
+              <i className="fas fa-spinner"></i>
+            ) : (
+              <img className="weather-icon-png"></img>
+            )}
           </div>
-          <div id="weather-info-container">
-            <p className="weather-local">{location}</p>
-            <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
-          </div>
+          {!loading && (
+            <div id="weather-info-container">
+              <p className="weather-local">{location}</p>
+              <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
+            </div>
+          )}
         </div>
         <div id="select-container">
           {/* 기분 선택 */}
@@ -203,7 +208,9 @@ function UserSelect() {
             <span>좋음</span>
           </div>
           {/* 음식 대분류 선택 */}
-          <div className="select-food-title">선호하는 음식 종류를 선택해주세요.</div>
+          <div className="select-food-title">
+            선호하는 음식 종류를 선택해주세요.
+          </div>
           <div id="category-container">
             <div className="checkboxgroup">
               <img
@@ -312,7 +319,8 @@ function UserSelect() {
             } else {
               swal("모든 항목을 선택해주세요", "", "error");
             }
-          }}>
+          }}
+        >
           SUBMIT
         </button>
       </div>

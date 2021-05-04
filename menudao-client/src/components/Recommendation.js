@@ -1,15 +1,12 @@
-import swal from "sweetalert";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushFoodInfo } from "../module/RecommendFood";
-import { useHistory } from "react-router";
 import "../css/recommendation.css";
 
 // "이 메뉴로 할래요" 버튼 클릭 시 다이어리에 추가되고 alert창이 뜬다 (axios요청)
 function Recommendation() {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   // UserSelect로 initialState에 저장한 사용자 선택정보를 가져온다
   const weather = useSelector(
@@ -80,32 +77,31 @@ function Recommendation() {
       })
       .catch((err) => {
         console.log(err);
-        if (err.status === 401) {
-          swal("로그인 세션이 만료되었습니다", "", "error");
-          history.push("/main");
-        }
       });
   };
 
   //"이 메뉴로 할래요" 버튼 클릭 시 axios 요청을 보내는 함수 작성 (데이터가 Diary list에 추가된다)
+  // diary POST 요청 (날짜도 같이 보내줘야함)
 
   return (
     <>
       <div id="common-container">
         {/* menu-choice에서 food-name이랑 카테고리도 서버에서 받아 와야할 것 같다! */}
-        <div className="food-icon-container">
+        <div id="food-icon-container">
           {/* 아이콘은 public에 있슴다, 경로는 Nav.js 로고 가져온 거 확인 해주세요! */}
           {/* 서버에서 받아온 카테고리에 따라 다른 아이콘이 뜨도록 조건문 필요할 것 같슴다! */}
           <img className="food-category-icon"></img>
           {/* span font-size 크게! */}
-          <p className="food-name"></p>
+          <div className="food-name">{Recommend_Food}"마카롱"</div>
         </div>
         <div id="recommend-container">
-          <p className="recommend-subtitle">오늘은 {Recommend_Food} 어때?</p>
-          <button className="positive-btn">이 메뉴로 할래요</button>
-          <button className="negative-btn" onClick={() => getAnotherFood()}>
-            다른 메뉴는요?
-          </button>
+          <p className="recommend-subtitle">오늘은 {Recommend_Food}마카롱 어떤가요?</p>
+          <div className="rec-btn-container">
+            <button className="positive-btn">이 메뉴로 할래요</button>
+            <button className="negative-btn" onClick={() => getAnotherFood()}>
+              다른 메뉴는요?
+            </button>
+          </div>
         </div>
       </div>
     </>
