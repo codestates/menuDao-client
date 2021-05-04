@@ -11,7 +11,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route path="/" render={() => <Main />} />
+          <Route exact path="/" render={() => <Main />} />
           <Route path="/select" render={() => <Select />} />
           <Route path="/recommend" render={() => <Recommend />} />
           <Route path="/mypage" render={() => <Mypage />} />
