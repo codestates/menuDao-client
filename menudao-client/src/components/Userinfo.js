@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/mypage.css";
 
-function Userinfo() {
+function Userinfo({ MypageInfo }) {
   return (
     <>
       <div id="#mypageLogo-container">
