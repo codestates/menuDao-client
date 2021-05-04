@@ -135,16 +135,17 @@ function UserSelect() {
       <div id="common-select-container">
         <div id="weather-container">
           <div className="weather-icon">
-          { loading
-            ? <i className="fas fa-spinner"></i>
-            : <img className="weather-icon-png"></img> 
+            { loading
+              ? <i className="fas fa-spinner"></i>
+              : <img className="weather-icon-png"></img> 
+            }
+          </div>
+          { !loading && 
+            <div id="weather-info-container">
+              <p className="weather-local">{location}</p>
+              <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
+            </div>
           }
-            {/* <img className="weather-icon-png"></img>  */}
-          </div>
-          <div id="weather-info-container">
-            <p className="weather-local">{location}</p>
-            <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
-          </div>
         </div>
         <div id="select-container">
           {/* 기분 선택 */}
