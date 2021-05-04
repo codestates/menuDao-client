@@ -81,7 +81,7 @@ function Recommendation() {
   };
 
   //"이 메뉴로 할래요" 버튼 클릭 시 axios 요청을 보내는 함수 작성 (데이터가 Diary list에 추가된다)
-  // diary POST 요청
+  // diary POST 요청 (날짜도 같이 보내줘야함)
 
   return (
     <>
