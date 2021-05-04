@@ -17,6 +17,7 @@ function App() {
   const user_accessToken = useSelector(
     (status) => status.LoginReducer.accessToken
   );
+
   return (
     <>
       <Router>
@@ -29,7 +30,7 @@ function App() {
           <Route
             path="/"
             render={() => {
-              if (user_accessToken) {
+              if (user_accessToken.length !== 0) {
                 console.log("accessToken 존재");
                 return <Redirect to="/select" />;
               }
