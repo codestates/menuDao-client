@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { pushFoodName } from "../module/RecommendFood";
+import "../css/select.css"
 
 function UserSelect() {
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ function UserSelect() {
     }
   };
   // Rerendering 방지
-  useEffect(() => getLocation(), [temp, location]);
+  useEffect(() => getLocation());
 
   const WeathersValues = () => {
     if (icon === "13d" || icon === "13n") {
@@ -122,7 +123,7 @@ function UserSelect() {
   };
   return (
     <>
-      <div id="common-container">
+      <div id="common-select-container">
         <div id="weather-container">
           <div className="weather-icon">
             <img className="weather-icon-png"></img>
@@ -196,7 +197,7 @@ function UserSelect() {
             <span>좋음</span>
           </div>
           {/* 음식 대분류 선택 */}
-          <div className="select-title">선호하는 음식 종류를 선택해주세요.</div>
+          <div className="select-food-title">선호하는 음식 종류를 선택해주세요.</div>
           <div id="category-container">
             <div className="checkboxgroup">
               <img
@@ -295,6 +296,8 @@ function UserSelect() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="btn-container">
         <button
           id="select-btn"
           onClick={() => {
@@ -303,8 +306,7 @@ function UserSelect() {
             } else {
               swal("모든 항목을 선택해주세요", "", "error");
             }
-          }}
-        >
+          }}>
           SUBMIT
         </button>
       </div>
