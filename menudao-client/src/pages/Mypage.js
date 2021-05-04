@@ -19,7 +19,7 @@ function Mypage() {
     user_birthday: "",
   });
 
-  const getMypageInfo = () => {
+  const getMypageInfo = function () {
     axios
       .get("http://localhost:4000/mypage", {
         headers: { "Content-Type": "application/json" },
