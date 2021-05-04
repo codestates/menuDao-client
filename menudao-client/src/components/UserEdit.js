@@ -24,7 +24,7 @@ function UserEdit({ setIsClick }) {
     }
   };
   // 모든 조건에 다 통과된다면 요청, edit -> mypage로 다시 렌더
-  const PwInputChecking = () => {
+  const PwInputChecking = function () {
     if (!user_password) {
       console.log(user_password);
       swal("변경할 비밀번호를 입력해주세요.", "", "error");
@@ -38,7 +38,8 @@ function UserEdit({ setIsClick }) {
     }
   };
   // axios 요청
-  const editRequestHandler = () => {
+  const editRequestHandler = function () 
+   {
     axios
       .patch(
         "http://localhost:4000/mypage",
