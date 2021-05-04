@@ -84,6 +84,7 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
             <button
               id="login-btn"
               onClick={() => {
+                turnOffModal_CSS();
                 loginRequestHandler();
               }}
             >
