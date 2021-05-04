@@ -121,8 +121,6 @@ function UserSelect() {
       })
       .catch((err) => {
         console.log(err);
-        swal("로그인 세션이 만료되었습니다", "", "error");
-        history.push("/");
       });
   };
   return (
