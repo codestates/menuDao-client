@@ -9,7 +9,7 @@ import swal from "sweetalert";
 function Diarylist() {
   const [Diarylist, setDiarylist] = useState([]);
 
-  const handleGetDiarylist = () => {
+  const handleGetDiarylist = function () {
     axios
       .post("http://localhost:4000/diary-list", {
         headers: { "Content-Type": "application/json" },
@@ -28,9 +28,16 @@ function Diarylist() {
   return (
     <>
       <Nav />
-      {Diarylist.map((Diary) => (
-        <DiaryCapsule />
-      ))}
+      <div id="diary-list-container">
+        {Diarylist.map((Diary) => (
+          <DiaryCapsule
+            key={Diary.id}
+            feeling={Diary.feeling}
+            weather={Diary.weather}
+            choice_menu={Diary.choice_menu}
+          />
+        ))}
+      </div>
     </>
   );
 }

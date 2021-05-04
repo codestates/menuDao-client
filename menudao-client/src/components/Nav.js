@@ -2,7 +2,6 @@
 import axios from "axios";
 import React from "react";
 import { useHistory } from "react-router";
-import { useCookies } from "react-cookie";
 import swal from "sweetalert";
 import "../css/nav.css";
 
@@ -11,30 +10,26 @@ import "../css/nav.css";
 function Nav() {
   const history = useHistory();
 
-  const [cookies, removeCookie] = useCookies(["accessToken"]);
-
-  function handleRemoveCookie() {
-    removeCookie("accessToken");
-    swal("로그아웃 되었습니다", "", "success");
-    history.push("/");
-  }
-
-  // 로그아웃 함수
-  // const handlelogOut = () => {
-  //   axios
-  //     .post("http://localhost:4000/signout", {
-  //       headers: { "Content-Type": "application/json" },
-  //       withCredentials: true,
-  //     })
-  //     .then(() => {
-  //       swal("로그아웃 되었습니다", "", "success");
-  //       history.push("/");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       swal("로그아웃 실패", "", "error");
-  //     });
-  // };
+  //로그아웃 함수
+  const handlelogOut = function () {
+    axios
+      .post(
+        "http://localhost:4000/signout",
+        {},
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        swal("로그아웃 되었습니다", "", "success");
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        swal("로그아웃 실패", "", "error");
+      });
+  };
 
   return (
     <>
@@ -65,7 +60,7 @@ function Nav() {
           >
             Diary
           </button>
-          <button id="logout_btn" onClick={() => handleRemoveCookie()}>
+          <button id="logout_btn" onClick={() => handlelogOut()}>
             Log out
           </button>
         </div>

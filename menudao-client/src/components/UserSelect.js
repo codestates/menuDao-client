@@ -21,7 +21,7 @@ function UserSelect() {
   const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
   const [loading, setLoading] = useState(true);
 
-  const getLocation = async () => {
+  const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async function (position) {
@@ -75,7 +75,7 @@ function UserSelect() {
   };
   // Rerendering 방지
   useEffect(() => getLocation(), [weather]);
-  const WeathersValues = () => {
+  const WeathersValues = function () {
     if (icon === "13d" || icon === "13n") {
       setWeather("눈");
     } else if (
