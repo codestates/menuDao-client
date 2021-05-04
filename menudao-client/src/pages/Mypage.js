@@ -21,7 +21,10 @@ function Mypage() {
 
   const getMypageInfo = () => {
     axios
-      .get("http://localhost:4000/mypage")
+      .get("http://localhost:4000/mypage", {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
       .then((res) => {
         setMypageInfo({
           user_id: res.data.user_id,
@@ -33,15 +36,12 @@ function Mypage() {
       })
       .catch((err) => {
         console.log(err);
-        if (err.status === 401) {
-          swal("로그인 세션이 만료되었습니다", "", "error");
-          history.push("/main");
-        }
+        swal("로그인 세션이 만료되었습니다", "", "error");
+        history.push("/");
       });
   };
 
-  useEffect(() => getMypageInfo());
-
+  useEffect(() => getMypageInfo(), []);
   return (
     <>
       <Nav />

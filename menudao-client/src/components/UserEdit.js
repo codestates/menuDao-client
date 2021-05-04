@@ -69,6 +69,7 @@ function UserEdit({ setIsClick }) {
       </div>
       <div id="mypageContents-container">
         <button id="mypage-save-btn" onClick={() => {PwInputChecking()}}>SAVE</button>
+        <button id="mypage-cancle-btn" onClick={() => {setIsClick(false)}}>CANCEL</button>
         <div className="mypage-title">USER INFOMATION EDIT</div>
         <div id="mypage-main-container">
           <div id="userinfo-subtitle">

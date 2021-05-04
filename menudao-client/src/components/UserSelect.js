@@ -19,7 +19,7 @@ function UserSelect() {
   const [temp, setTemp] = useState("");
   const [location, setLocation] = useState("");
   const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
-
+  console.log("cookie:", document.cookie)
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
