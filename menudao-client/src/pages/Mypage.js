@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
+import axios from "axios";
+import swal from "sweetalert";
+import { useHistory } from "react-router";
 import Userinfo from "../components/Userinfo";
 import { useSelector, useDispatch } from "react-redux";
 // Userinfo 컴포넌트를 불러와서 렌더링한다
-
+// axios요청을 하여 Userinfo에 props로 내려준다 (값을든 hook으로 저장)
 function Mypage() {
+  const history = useHistory();
+
+  const [MypageInfo, setMypageInfo] = useState({
+    user_id: "",
+    user_name: "",
+    user_sex: "",
+    user_birthday: "",
+  });
+
+  const getMypageInfo = () => {
+    axios
+      .get("http://localhost:4000/mypage")
+      .then((res) => {
+        setMypageInfo({
+          user_id: res.data.user_id,
+          user_name: res.data.user_name,
+          user_sex: res.data.user_sex,
+          user_birthday: res.data.user_birthday,
+        });
+        console.log("mypage 데이터 성공적으로 받아옴");
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.status === 401) {
+          swal("로그인 세션이 만료되었습니다", "", "error");
+          history.push("/main");
+        }
+      });
+  };
+
+  useEffect(() => getMypageInfo(), [MypageInfo]);
   return (
     <>
       <Nav />
-      <Userinfo />
+      <Userinfo MypageInfo={MypageInfo} />
     </>
   );
 }
