@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Userinfo({ isClick, setIsClick }) {
+function Userinfo({ MypageInfo, setIsClick }) {
   return (
     <>
       <div id="side-bar">
@@ -17,10 +17,10 @@ function Userinfo({ isClick, setIsClick }) {
             <div className="mypage-sex">성별</div>
           </div>
           <div id="userinfo-container">
-            <div className="user-id">codestate</div>
-            <div className="user-name">권재혁</div>
-            <div className="user-birth">95.02.21</div>
-            <div className="user-sex">여자</div>
+            <div className="user-id">{MypageInfo.user_id}</div>
+            <div className="user-name">{MypageInfo.user_name}</div>
+            <div className="user-birth">{MypageInfo.user_birthday}</div>
+            <div className="user-sex">{MypageInfo.user_sex}</div>
           </div>
         </div>
       </div>

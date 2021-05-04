@@ -4,7 +4,8 @@ import swal from "sweetalert";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { pushFoodName } from "../module/RecommendFood";
+import { pushFoodInfo } from "../module/RecommendFood";
+import { pushWeatherInfo } from "../module/WeatherInfo";
 import "../css/select.css"
 
 function UserSelect() {
@@ -39,8 +40,9 @@ function UserSelect() {
               setTemp(temparature);
               const place = json.name; // 사용자 위치
               setLocation(place);
-              const iconcode = json.weather[0].icon;
+              const iconcode = json.weather[0].icon; //날씨 아이콘 code
               setIcon(iconcode);
+              WeathersValues();
               const weatherIcon = document.querySelector(".weather-icon-png");
               if (weather === "눈") {
                 weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
@@ -51,7 +53,6 @@ function UserSelect() {
               } else {
                 weatherIcon.setAttribute("src", "./weather_icon/sun.png");
               }
-              WeathersValues();
             });
         },
         function (error) {
@@ -113,12 +114,17 @@ function UserSelect() {
       )
       .then((res) => {
         console.log(res.data);
-        dispatch(pushFoodName(res.data.food_name));
-        swal("선택한 정보 전송", "", "success");
+        dispatch(pushFoodInfo(res.data.food_name, res.data.food_category));
+        swal("정보 전송 완료", "", "success");
+        dispatch(pushWeatherInfo(weather, big_choice_menu, feeling));
         history.push("/recommend");
       })
       .catch((err) => {
         console.log(err);
+        if (err.status === 401) {
+          swal("로그인 세션이 만료되었습니다", "", "error");
+          history.push("/main");
+        }
       });
   };
   return (

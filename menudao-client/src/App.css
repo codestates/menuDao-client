@@ -28,6 +28,10 @@ input:focus {
   border: 1px solid #f98228;
   color: #424242;
 }
+input.join-gender {
+  width: 15px;
+}
+
 #join-input:focus {
   border: 1px solid #f98228;
 }
@@ -116,6 +120,7 @@ ul {
 }
 #join-input {
   line-height: 30px;
+  width: 10px;
   border: 1px solid #ffb74d;
   float: left;
   width: 310px;

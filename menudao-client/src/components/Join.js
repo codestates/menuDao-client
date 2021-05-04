@@ -39,7 +39,9 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
       })
       .catch((err) => {
         console.log(err);
-        swal("중복된 ID 입니다", "", "error");
+        if (err.status === 409) {
+          swal("중복된 ID 입니다", "", "error");
+        }
       });
   };
 
