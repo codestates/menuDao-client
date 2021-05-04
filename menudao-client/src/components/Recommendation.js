@@ -1,4 +1,3 @@
-import swal from "sweetalert";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -80,10 +79,6 @@ function Recommendation() {
       })
       .catch((err) => {
         console.log(err);
-        if (err.status === 401) {
-          swal("로그인 세션이 만료되었습니다", "", "error");
-          history.push("/main");
-        }
       });
   };
 
