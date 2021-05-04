@@ -1,21 +1,28 @@
-import React from "react";
-import "../css/mypage.css";
+import React, { useState } from "react";
 
-function Userinfo() {
+function Userinfo({ isClick, setIsClick }) {
   return (
     <>
-      <div id="#mypageLogo-container">
-        <div>마이페이지</div>
+      <div id="side-bar">
+        <div className="side-title">MY PAGE</div>
       </div>
-      <div id="#mypageContents-container">
-        <div>
-          <div>
-            <div id="#mypage-id">ID</div>
+      <div id="mypageContents-container">
+        <button id="mypage-edit-btn" onClick={() => {setIsClick(true)}}><i className="fas fa-pencil-alt"></i></button>
+        <div className="mypage-title">USER INFOMATION</div>
+        <div id="mypage-main-container">
+          <div id="userinfo-subtitle">
+            <div className="mypage-id">ID</div>
+            <div className="mypage-name">이름</div>
+            <div className="mypage-birth">생년월일</div>
+            <div className="mypage-sex">성별</div>
           </div>
-          <div id="#mypage-name">이름</div>
-          <div id="#mypage-sex">성별</div>
+          <div id="userinfo-container">
+            <div className="user-id">codestate</div>
+            <div className="user-name">권재혁</div>
+            <div className="user-birth">95.02.21</div>
+            <div className="user-sex">여자</div>
+          </div>
         </div>
-        <button>Edit</button>
       </div>
     </>
   );

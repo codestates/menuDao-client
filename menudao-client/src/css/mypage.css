@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+input {
+  width: 70%;
+  font-size: 1.2rem;
+  height: 30px;
+  resize: none;
+  border-radius: 5px;
+  padding: 3px;
+  vertical-align: middle;
+  border: 1px solid #424242;
+}
+input:focus {
+  outline: none;
+  background-color: 0px 15px 20px rgba(255, 206, 72, 0.4);
+}
+#side-bar {
+  margin-top: 40px;
+  grid-column: 2 / 3;
+  grid-row: 3 / 5;
+  font-family: 'Questrial', sans-serif;
+}
+#mypageContents-container {
+  margin-top: 40px;
+  justify-content: space-evenly;
+  grid-column: 3 / 5;
+  grid-row: 3 / 8;
+  height: 450px;
+  font-size: 1.5rem;
+  padding: 30px 40px 30px 40px;
+  border: 0.5px solid #79797925;
+  border-radius: 10px;
+  box-shadow:
+    0 2.8px 2.2px rgba(255, 221, 179, 0.034),
+    0 6.7px 5.3px rgba(255, 221, 179, 0.034),
+    0 12.5px 10px rgba(184, 158, 126, 0.034),
+    0 22px 20px rgba(169, 150, 127, 0.034),
+    0 41.8px 33.4px rgba(152, 115, 69, 0.034),
+    0 80px 80px rgba(152, 148, 143, 0.034);
+}
+#mypage-main-container {
+  display: flex;
+}
+#mypage-edit-btn {
+  float: right;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 5px;
+}
+#mypage-save-btn {
+  float: right;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: 5px 10px 5px 10px;
+  background-color: #424242;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0px 8px 15px rgba(63, 63, 63, 0.1);
+  transition: all 0.3s ease 0s;
+}
+#userinfo-subtitle {
+  font-weight: 400;
+  flex-basis: 25%;
+}
+#userinfo-container {
+  flex-basis: 75%;
+  font-weight: 300;
+}
+.side-title {
+  font-size: 1.5rem;
+}
+.mypage-title {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #7979794b;
+}
+.warning-message {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: rgb(255, 66, 66);
+}
+.mypage-pw {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.password-changer {
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.mypage-id {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.mypage-name {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.mypage-birth {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.mypage-sex {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.user-id {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.user-name {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.user-birth {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.user-sex {
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+}
+.fa-pencil-alt {
+  font-size: 1.8rem;
+  margin-left: 10px;
+  color: #424242;
+}
