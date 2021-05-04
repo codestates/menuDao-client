@@ -25,8 +25,8 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
         }
       )
       .then((res) => {
-        console.log("accessToken: ", res.data.accessToken);
-        dispatch(userLogin(res.data.accessToken));
+        console.log("accessToken: ", res.cookie.accessToken);
+        dispatch(userLogin(res.cookie.accessToken));
         swal("로그인되었습니다", "", "success");
         history.push("/select");
       })
