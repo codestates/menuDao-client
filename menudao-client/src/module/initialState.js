@@ -10,5 +10,15 @@ export const initialState = {
     userPWcheck: false,
   },
   accessToken: "",
-  foodName: "",
+
+  foodInfo: {
+    food_name: "",
+    food_category: "",
+  },
+
+  weatherInfo: {
+    weather: "",
+    big_choice_menu: "",
+    feeling: "",
+  },
 };
