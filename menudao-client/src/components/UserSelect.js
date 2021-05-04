@@ -19,8 +19,9 @@ function UserSelect() {
   const [temp, setTemp] = useState("");
   const [location, setLocation] = useState("");
   const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
+  const [loading, setLoading] = useState(true);
 
-  const getLocation = () => {
+  const getLocation = async () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async function (position) {
@@ -29,7 +30,7 @@ function UserSelect() {
           const lon = position.coords.longitude;
           const API_KEY = "4d8822288b7fb34e914b976fab096207";
           await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API_KEY}&units=metric`
           )
             .then(function (response) {
               return response.json();
@@ -43,15 +44,18 @@ function UserSelect() {
               const iconcode = json.weather[0].icon; //날씨 아이콘 code
               setIcon(iconcode);
               WeathersValues();
+              setLoading(false);
+            })
+            .then(function () {
               const weatherIcon = document.querySelector(".weather-icon-png");
-              if (weather === "눈") {
-                weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
-              } else if (weather === "비") {
-                weatherIcon.setAttribute("src", "./weather_icon/raining.png");
+              if (weather === "맑음") {
+                weatherIcon.setAttribute("src", "./weather_icon/sun.png");
               } else if (weather === "흐림") {
                 weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
+              } else if (weather === "비") {
+                weatherIcon.setAttribute("src", "./weather_icon/raining.png");
               } else {
-                weatherIcon.setAttribute("src", "./weather_icon/sun.png");
+                weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
               }
             });
         },
@@ -70,8 +74,7 @@ function UserSelect() {
     }
   };
   // Rerendering 방지
-  useEffect(() => getLocation());
-
+  useEffect(() => getLocation(), [weather]);
   const WeathersValues = () => {
     if (icon === "13d" || icon === "13n") {
       setWeather("눈");
@@ -128,12 +131,18 @@ function UserSelect() {
       <div id="common-select-container">
         <div id="weather-container">
           <div className="weather-icon">
-            <img className="weather-icon-png"></img>
+            {loading ? (
+              <i className="fas fa-spinner"></i>
+            ) : (
+              <img className="weather-icon-png"></img>
+            )}
           </div>
-          <div id="weather-info-container">
-            <p className="weather-local">{location}</p>
-            <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
-          </div>
+          {!loading && (
+            <div id="weather-info-container">
+              <p className="weather-local">{location}</p>
+              <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
+            </div>
+          )}
         </div>
         <div id="select-container">
           {/* 기분 선택 */}

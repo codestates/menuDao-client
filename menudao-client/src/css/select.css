@@ -68,14 +68,15 @@ span {
 #category-container {
   grid-column: 2 / 4;
   display: flex;
-  justify-content: space-between;
   align-self: center;
+  padding: 10px;
+  justify-content: space-between;
 }
 .weather-icon {
   /* border: 1px solid fuchsia; */
   color: #ffa500;
   opacity: 0.8;
-  flex-basis: 65%;
+  flex-basis: 50%;
   text-align: center;
   align-self: center;
 }
@@ -117,7 +118,6 @@ span {
   display: inline-block;
   text-align: center;
   align-self: center;
-  margin: 15px;
 }
 .checkboxgroup label {
   display: block;
@@ -201,4 +201,13 @@ span {
 }
 .fa-grin-hearts {
   color: rgb(226, 140, 83);
+}
+/* loading spinner */
+.fa-spinner {
+  -webkit-animation: spin 2s linear infinite;
+  float: right;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
