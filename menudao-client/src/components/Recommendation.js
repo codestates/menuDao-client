@@ -2,13 +2,11 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushFoodInfo } from "../module/RecommendFood";
-import { useHistory } from "react-router";
 import "../css/recommendation.css";
 
 // "이 메뉴로 할래요" 버튼 클릭 시 다이어리에 추가되고 alert창이 뜬다 (axios요청)
 function Recommendation() {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   // UserSelect로 initialState에 저장한 사용자 선택정보를 가져온다
   const weather = useSelector(
