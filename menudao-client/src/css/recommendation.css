@@ -1,0 +1,6 @@
+#recommend {
+  grid-column: 3 / 5;
+  grid-row: 3 / 4;
+  justify-self: center;
+  /* align-self: center; */
+}
