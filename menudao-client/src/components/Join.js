@@ -135,7 +135,7 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
             <input
               id="join-input"
               className="join-input-pw"
-              placeholder="최소 8자 이상, 알파벳과 숫자 및 특수문자(@$!%*#?&) 하나 이상 포함"
+              placeholder="8자 이상, 알파벳과 숫자 및 특수문자(@$!%*#?&) 하나 이상 포함"
               onChange={(e) => {
                 dispatch(checkUserPW(e.target.value));
               }}

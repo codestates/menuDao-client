@@ -32,6 +32,7 @@ function App() {
             render={() => {
               if (user_accessToken.length !== 0) {
                 console.log("accessToken 존재");
+                console.log("cookie:", document.cookie);
                 return <Redirect to="/select" />;
               }
               return <Redirect to="/main" />;

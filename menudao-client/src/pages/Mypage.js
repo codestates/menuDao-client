@@ -40,15 +40,20 @@ function Mypage() {
       });
   };
 
-  useEffect(() => getMypageInfo(), [MypageInfo]);
+  useEffect(() => getMypageInfo());
+
   return (
     <>
       <Nav />
-      {isClick ? <UserEdit 
-      isClick={isClick} 
-      setIsClick={setIsClick} 
-      /> 
-      :  <Userinfo isClick={isClick} MypageInfo={MypageInfo} setIsClick={setIsClick} />}
+      {isClick ? (
+        <UserEdit isClick={isClick} setIsClick={setIsClick} />
+      ) : (
+        <Userinfo
+          isClick={isClick}
+          MypageInfo={MypageInfo}
+          setIsClick={setIsClick}
+        />
+      )}
     </>
   );
 }
