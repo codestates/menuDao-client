@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import LoginReducer from "./loginModal";
 import validationReducer from "./validationCheck";
-import foodNameReducer from "./RecommendFood";
+import foodInfoReducer from "./RecommendFood";
+import weatherInfoReducer from "./WeatherInfo";
 const rootReducer = combineReducers({
   LoginReducer,
   validationReducer,
-  foodNameReducer,
+  foodInfoReducer,
+  weatherInfoReducer,
 });
 
 export default rootReducer;
