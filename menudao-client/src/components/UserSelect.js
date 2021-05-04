@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { pushFoodInfo } from "../module/RecommendFood";
 import { pushWeatherInfo } from "../module/WeatherInfo";
-import "../css/select.css"
+import "../css/select.css";
 
 function UserSelect() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function UserSelect() {
   const [temp, setTemp] = useState("");
   const [location, setLocation] = useState("");
   const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
-  console.log("cookie:", document.cookie)
+
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -121,10 +121,8 @@ function UserSelect() {
       })
       .catch((err) => {
         console.log(err);
-        if (err.status === 401) {
-          swal("로그인 세션이 만료되었습니다", "", "error");
-          history.push("/main");
-        }
+        swal("로그인 세션이 만료되었습니다", "", "error");
+        history.push("/");
       });
   };
   return (
@@ -203,7 +201,9 @@ function UserSelect() {
             <span>좋음</span>
           </div>
           {/* 음식 대분류 선택 */}
-          <div className="select-food-title">선호하는 음식 종류를 선택해주세요.</div>
+          <div className="select-food-title">
+            선호하는 음식 종류를 선택해주세요.
+          </div>
           <div id="category-container">
             <div className="checkboxgroup">
               <img
@@ -312,7 +312,8 @@ function UserSelect() {
             } else {
               swal("모든 항목을 선택해주세요", "", "error");
             }
-          }}>
+          }}
+        >
           SUBMIT
         </button>
       </div>
