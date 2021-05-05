@@ -29,6 +29,7 @@ function Diarylist() {
     <>
       <Nav />
       <div id="diary-list-container">
+        <button>삭제</button>
         {Diarylist.map((Diary) => (
           <DiaryCapsule
             key={Diary.id}
