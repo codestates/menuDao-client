@@ -22,16 +22,15 @@ function UserSelect() {
     loading: true,
     location: "",
   })
-
   const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-          function (position) {
+          async function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
           const API_KEY = "4d8822288b7fb34e914b976fab096207";
-          fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${API_KEY}&units=metric`
+          await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API_KEY}&units=metric`
           )
             .then(function (response) {
               return response.json();
@@ -39,11 +38,11 @@ function UserSelect() {
             .then(function (json) {
               console.log(json);
               setweatherInfo({
-                temp: json.current.temp,
-                icon: json.current.weather[0].icon,
+                temp: json.main.temp,
+                icon: json.weather[0].icon,
                 loading: false,
-                location: json.timezone.split('/')[1],
-              })         
+                location: json.name
+              })        
             })
             .then(function () {
               WeathersValues();
@@ -134,7 +133,7 @@ function UserSelect() {
           </div>
           {!weatherInfo.loading && (
             <div id="weather-info-container">
-              <p className="weather-local">{weatherInfo.location}</p>
+              <p className="weather-local">{weatherInfo.location.toUpperCase()}</p>
               <p className="weather-temp">{Math.floor(weatherInfo.temp) + "℃"}</p>
             </div>
           )}
