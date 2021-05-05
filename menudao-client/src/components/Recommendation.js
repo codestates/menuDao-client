@@ -6,6 +6,8 @@ import { useHistory } from "react-router";
 import moment from "moment";
 import "../css/recommendation.css";
 import swal from "sweetalert";
+import dotenv from "dotenv";
+dotenv.config();
 
 // "이 메뉴로 할래요" 버튼 클릭 시 다이어리에 추가되고 alert창이 뜬다 (axios요청)
 function Recommendation() {
@@ -33,7 +35,7 @@ function Recommendation() {
   );
 
   // UserSelect에서 initialState에 저장한 food category을 가져와서 조건식에 따라 아이콘을 바꿔준다
-  const Category_Inco = () => {
+  const Category_Icon = function () {
     const categoryIcon = document.querySelector(".food-category-icon");
     if (Recommend_Category === "한식") {
       categoryIcon.setAttribute("src", "./food_icon/bibimbap.png");
@@ -53,13 +55,13 @@ function Recommendation() {
     }
   };
 
-  useEffect(() => Category_Inco(), [Recommend_Category]);
+  useEffect(() => Category_Icon(), [Recommend_Category]);
 
   // 만약, 다른 메뉴를 추천받고 싶으면 다시 POST요청
   const getAnotherFood = function () {
     axios
       .post(
-        "http://localhost:4000/menu-choice",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/menu-choice`,
         {
           /* Body값: weahter,big_choice_menu,feeling*/
           weather: weather,
@@ -81,6 +83,7 @@ function Recommendation() {
       })
       .catch((err) => {
         console.log(err);
+        swal("Error", "", "error");
       });
   };
 
@@ -89,7 +92,7 @@ function Recommendation() {
   const addDiarylist = function () {
     axios
       .post(
-        "http://localhost:4000/diary",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/diary`,
         {
           weather: weather,
           choice_menu: Recommend_Food,
@@ -115,12 +118,8 @@ function Recommendation() {
   return (
     <>
       <div id="common-container">
-        {/* menu-choice에서 food-name이랑 카테고리도 서버에서 받아 와야할 것 같다! */}
         <div id="food-icon-container">
-          {/* 아이콘은 public에 있슴다, 경로는 Nav.js 로고 가져온 거 확인 해주세요! */}
-          {/* 서버에서 받아온 카테고리에 따라 다른 아이콘이 뜨도록 조건문 필요할 것 같슴다! */}
           <img className="food-category-icon"></img>
-          {/* span font-size 크게! */}
           <div className="food-name">{Recommend_Food}"마카롱"</div>
         </div>
         <div id="recommend-container">

@@ -12,6 +12,8 @@ import {
   pushUserGender,
   resetuserInfo,
 } from "../module/validationCheck";
+import dotenv from "dotenv";
+dotenv.config();
 
 function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
   const joinRequestHandler = function () {
     axios
       .post(
-        "http://localhost:4000/signup",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/signup`,
         {
           user_id: Join_UserInfo.user_id,
           user_name: Join_UserInfo.user_name,

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../css/mypage.css";
 import swal from "sweetalert";
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
 function UserEdit({ setIsClick }) {
   const [user_password, setNewPW] = useState("");
@@ -38,11 +40,10 @@ function UserEdit({ setIsClick }) {
     }
   };
   // axios 요청
-  const editRequestHandler = function () 
-   {
+  const editRequestHandler = function () {
     axios
       .patch(
-        "http://localhost:4000/mypage",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/mypage`,
         {
           user_password: user_password,
         },

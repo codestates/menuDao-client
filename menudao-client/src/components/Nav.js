@@ -4,6 +4,8 @@ import React from "react";
 import { useHistory } from "react-router";
 import swal from "sweetalert";
 import "../css/nav.css";
+import dotenv from "dotenv";
+dotenv.config();
 
 //  마이페이지, 다이어리, 로그아웃 버튼 생성 (axios 요청 총 3개 구현)
 //  버튼 클릭하면 각각의 페이지로 이동 (Redirect)
@@ -14,7 +16,7 @@ function Nav() {
   const handlelogOut = function () {
     axios
       .post(
-        "http://localhost:4000/signout",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/signout`,
         {},
         {
           headers: { "Content-Type": "application/json" },

@@ -3,6 +3,8 @@ import swal from "sweetalert";
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import dotenv from "dotenv";
+dotenv.config();
 
 function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
   const history = useHistory();
@@ -13,7 +15,7 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
   const loginRequestHandler = function () {
     axios
       .post(
-        "http://localhost:4000/signin",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/signin`,
         { user_id: user_id, user_password: user_password },
         {
           headers: { "Content-Type": "application/json" },
@@ -22,7 +24,6 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
       )
       .then((res) => {
         swal("로그인되었습니다", "", "success");
-        console.log("cookie:", document.cookie);
         turnOffModal_CSS();
         history.push("/select");
       })

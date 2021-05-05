@@ -7,6 +7,8 @@ import { useHistory } from "react-router";
 import { pushFoodInfo } from "../module/RecommendFood";
 import { pushWeatherInfo } from "../module/WeatherInfo";
 import "../css/select.css";
+import dotenv from "dotenv";
+dotenv.config();
 
 function UserSelect() {
   const dispatch = useDispatch();
@@ -21,12 +23,12 @@ function UserSelect() {
     icon: "",
     loading: true,
     location: "",
-  })
+  });
 
   const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-          function (position) {
+        function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
           const API_KEY = "4d8822288b7fb34e914b976fab096207";
@@ -42,8 +44,8 @@ function UserSelect() {
                 temp: json.current.temp,
                 icon: json.current.weather[0].icon,
                 loading: false,
-                location: json.timezone.split('/')[1],
-              })         
+                location: json.timezone.split("/")[1],
+              });
             })
             .then(function () {
               WeathersValues();
@@ -99,7 +101,7 @@ function UserSelect() {
   const selectRequestHandler = function () {
     axios
       .post(
-        "http://localhost:4000/menu-choice",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/menu-choice`,
         {
           weather: weather,
           big_choice_menu: big_choice_menu,
@@ -112,7 +114,7 @@ function UserSelect() {
       )
       .then((res) => {
         console.log(res.data);
-        dispatch(pushFoodInfo(res.data.food_name, res.data.food_category));
+        dispatch(pushFoodInfo(res.data.menu, res.data.big_choice_menu));
         swal("정보 전송 완료", "", "success");
         dispatch(pushWeatherInfo(weather, big_choice_menu, feeling));
         history.push("/recommend");
@@ -135,7 +137,9 @@ function UserSelect() {
           {!weatherInfo.loading && (
             <div id="weather-info-container">
               <p className="weather-local">{weatherInfo.location}</p>
-              <p className="weather-temp">{Math.floor(weatherInfo.temp) + "℃"}</p>
+              <p className="weather-temp">
+                {Math.floor(weatherInfo.temp) + "℃"}
+              </p>
             </div>
           )}
         </div>
