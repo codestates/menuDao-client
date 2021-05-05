@@ -43,16 +43,18 @@
   grid-column: 4 / 5;
   grid-row: 1 / 2;
   width: 50px;
+  border: 1px solid #424242;
   margin-left: 20px;
-  border: none;
+  border-radius: 5px;
   color: #424242;
   background-color: #fff;
   float: right;
-  text-align: left;
   transition: all 0.3s ease 0s;
 }
 #diary-edit-btn:hover {
   transform: translateY(-3px);
+  background-color: #424242;
+  color: #fff;
 }
 #diary-save-btn {
   grid-column: 4 / 5;
@@ -105,7 +107,7 @@
   text-align: center;
   align-self: center;
 }
-.fa-grin-hearts {
+#diaryinfo-subtitle > .fa-grin-hearts {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
   opacity: 80%;
