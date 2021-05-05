@@ -2,11 +2,15 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushFoodInfo } from "../module/RecommendFood";
+import { useHistory } from "react-router";
+import moment from "moment";
 import "../css/recommendation.css";
+import swal from "sweetalert";
 
 // "이 메뉴로 할래요" 버튼 클릭 시 다이어리에 추가되고 alert창이 뜬다 (axios요청)
 function Recommendation() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // UserSelect로 initialState에 저장한 사용자 선택정보를 가져온다
   const weather = useSelector(
@@ -57,7 +61,7 @@ function Recommendation() {
       .post(
         "http://localhost:4000/menu-choice",
         {
-          /* PATCH요청시 보내야할 Body값: weahter,big_choice_menu,feeling*/
+          /* Body값: weahter,big_choice_menu,feeling*/
           weather: weather,
           big_choice_menu: big_choice_menu,
           feeling: feeling,
@@ -82,6 +86,31 @@ function Recommendation() {
 
   //"이 메뉴로 할래요" 버튼 클릭 시 axios 요청을 보내는 함수 작성 (데이터가 Diary list에 추가된다)
   // diary POST 요청 (날짜도 같이 보내줘야함)
+  const addDiarylist = function () {
+    axios
+      .post(
+        "http://localhost:4000/diary",
+        {
+          weather: weather,
+          choice_menu: Recommend_Food,
+          big_choice_menu: big_choice_menu,
+          feeling: feeling,
+          date: moment().format("LLL"),
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        swal("Diary에 저장되었습니다", "", "success");
+      })
+      .catch((err) => {
+        console.log(err);
+        swal("로그인 세션이 만료되었습니다", "", "error");
+        history.push("/");
+      });
+  };
 
   return (
     <>
@@ -95,9 +124,13 @@ function Recommendation() {
           <div className="food-name">{Recommend_Food}"마카롱"</div>
         </div>
         <div id="recommend-container">
-          <p className="recommend-subtitle">오늘은 {Recommend_Food}마카롱 어떤가요?</p>
+          <p className="recommend-subtitle">
+            오늘은 {Recommend_Food}마카롱 어떤가요?
+          </p>
           <div className="rec-btn-container">
-            <button className="positive-btn">이 메뉴로 할래요</button>
+            <button className="positive-btn" onClick={() => addDiarylist()}>
+              이 메뉴로 할래요
+            </button>
             <button className="negative-btn" onClick={() => getAnotherFood()}>
               다른 메뉴는요?
             </button>
