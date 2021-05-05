@@ -17,7 +17,7 @@ function App() {
           <Route path="/recommend" render={() => <Recommend />} />
           <Route path="/mypage" render={() => <Mypage />} />
           <Route path="/diarylist" render={() => <Diarylist />} />
-          <Route path="/diaryinfo" render={() => <Diary />} />
+          <Route path="/diary" render={() => <Diary />} />
         </Switch>
       </Router>
     </>
