@@ -6,8 +6,9 @@ import swal from "sweetalert";
 import { useHistory } from "react-router";
 import Userinfo from "../components/Userinfo";
 import UserEdit from "../components/UserEdit";
-// Userinfo 컴포넌트를 불러와서 렌더링한다
-// axios요청을 하여 Userinfo에 props로 내려준다 (값을든 hook으로 저장)
+import dotenv from "dotenv";
+dotenv.config();
+
 function Mypage() {
   const [isClick, setIsClick] = useState(false);
   const history = useHistory();
@@ -21,10 +22,13 @@ function Mypage() {
 
   const getMypageInfo = function () {
     axios
-      .get("http://localhost:4000/mypage", {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
+      .get(
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/mypage`,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setMypageInfo({
           user_id: res.data.user_id,

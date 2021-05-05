@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../css/mypage.css";
 import swal from "sweetalert";
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
 function UserEdit({ setIsClick }) {
   const [user_password, setNewPW] = useState("");
@@ -12,7 +14,7 @@ function UserEdit({ setIsClick }) {
   };
   const checkingPW = (e) => {
     const warning = document.querySelector(".warning-message");
-    const inputarea = document.querySelector("input");
+    const inputarea = document.querySelector(".userinfo-edit");
     if (!isRightPW(e.target.value)) {
       inputarea.style.border = "1px solid red";
       warning.textContent =
@@ -38,11 +40,10 @@ function UserEdit({ setIsClick }) {
     }
   };
   // axios 요청
-  const editRequestHandler = function () 
-   {
+  const editRequestHandler = function () {
     axios
       .patch(
-        "http://localhost:4000/mypage",
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/mypage`,
         {
           user_password: user_password,
         },
@@ -92,7 +93,7 @@ function UserEdit({ setIsClick }) {
           </div>
           <div id="userinfo-container">
             <div className="password-changer">
-              <input onChange={(e) => checkingPW(e)}></input>
+              <input className="userinfo-edit" onChange={(e) => checkingPW(e)}></input>
             </div>
             <div className="warning-message"></div>
           </div>
