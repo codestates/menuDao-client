@@ -6,7 +6,7 @@ input {
   width: 1rem;
 }
 span {
-  font-weight: 100;
+  font-weight: 400;
 }
 #common-select-container{
   grid-column: 3 / 5;

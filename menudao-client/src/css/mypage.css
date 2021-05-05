@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-input {
+.userinfo-edit {
   width: 70%;
   font-size: 1.2rem;
   height: 30px;
@@ -14,7 +14,7 @@ input:focus {
   background-color: 0px 15px 20px rgba(255, 206, 72, 0.4);
 }
 #side-bar {
-  margin-top: 40px;
+  margin-top: 30px;
   grid-column: 2 / 3;
   grid-row: 3 / 5;
   font-family: 'Questrial', sans-serif;
@@ -87,7 +87,7 @@ input:focus {
   font-weight: 300;
 }
 .side-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .mypage-title {
   font-family: 'Questrial', sans-serif;

@@ -12,7 +12,7 @@ function UserEdit({ setIsClick }) {
   };
   const checkingPW = (e) => {
     const warning = document.querySelector(".warning-message");
-    const inputarea = document.querySelector("input");
+    const inputarea = document.querySelector(".userinfo-edit");
     if (!isRightPW(e.target.value)) {
       inputarea.style.border = "1px solid red";
       warning.textContent =
@@ -92,7 +92,7 @@ function UserEdit({ setIsClick }) {
           </div>
           <div id="userinfo-container">
             <div className="password-changer">
-              <input onChange={(e) => checkingPW(e)}></input>
+              <input className="userinfo-edit" onChange={(e) => checkingPW(e)}></input>
             </div>
             <div className="warning-message"></div>
           </div>
