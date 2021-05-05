@@ -7,6 +7,7 @@ import swal from "sweetalert";
 import dotenv from "dotenv";
 import "../css/diarylist.css";
 dotenv.config();
+axios.defaults.withCredentials = true;
 
 // Diary.js를 사용하여 저장된 목록들만큼 map 함수를 사용하여 랜더링한다
 function Diarylist() {
@@ -14,22 +15,23 @@ function Diarylist() {
 
   const handleGetDiarylist = function () {
     axios
-      .post(
-        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/signin`,
+      .get(
+        `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/diary-list`,
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       )
       .then((res) => {
-        setDiarylist(res.data.diaries);
+        console.log("diary", res.data);
+        setDiarylist([...Diarylist, ...res.data.diaries]);
       })
       .catch((err) => {
         console.log(err);
         swal("데이터를 읽어오지 못하였습니다", "", "error");
       });
   };
-  useEffect(() => handleGetDiarylist(), [Diarylist]);
+  useEffect(() => handleGetDiarylist(), []);
 
   return (
     <>
@@ -40,6 +42,7 @@ function Diarylist() {
         ) : (
           Diarylist.map((Diary) => (
             <DiaryCapsule
+              id={Diary.id}
               key={Diary.id}
               feeling={Diary.feeling}
               weather={Diary.weather}
