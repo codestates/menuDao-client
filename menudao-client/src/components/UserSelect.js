@@ -16,47 +16,37 @@ function UserSelect() {
   const [weather, setWeather] = useState("");
   const [big_choice_menu, setBigMenu] = useState("");
   const [feeling, setfeeling] = useState("");
-  const [temp, setTemp] = useState("");
-  const [location, setLocation] = useState("");
-  const [icon, setIcon] = useState(""); //weahter icon의 code 상태값
-  const [loading, setLoading] = useState(true);
+  const [weatherInfo = {}, setweatherInfo] = useState({
+    temp: "",
+    icon: "",
+    loading: true,
+    location: "",
+  })
 
   const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        async function (position) {
-          // console.log(position.coords.latitude + ' ' + position.coords.longitude);
+          function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
           const API_KEY = "4d8822288b7fb34e914b976fab096207";
-          await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API_KEY}&units=metric`
+          fetch(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${API_KEY}&units=metric`
           )
             .then(function (response) {
               return response.json();
             })
             .then(function (json) {
               console.log(json);
-              const temparature = json.main.temp; //온도
-              setTemp(temparature);
-              const place = json.name; // 사용자 위치
-              setLocation(place);
-              const iconcode = json.weather[0].icon; //날씨 아이콘 code
-              setIcon(iconcode);
-              WeathersValues();
-              setLoading(false);
+              setweatherInfo({
+                temp: json.current.temp,
+                icon: json.current.weather[0].icon,
+                loading: false,
+                location: json.timezone.split('/')[1],
+              })         
             })
             .then(function () {
-              const weatherIcon = document.querySelector(".weather-icon-png");
-              if (weather === "맑음") {
-                weatherIcon.setAttribute("src", "./weather_icon/sun.png");
-              } else if (weather === "흐림") {
-                weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
-              } else if (weather === "비") {
-                weatherIcon.setAttribute("src", "./weather_icon/raining.png");
-              } else {
-                weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
-              }
+              WeathersValues();
             });
         },
         function (error) {
@@ -74,30 +64,35 @@ function UserSelect() {
     }
   };
   // Rerendering 방지
-  useEffect(() => getLocation(), [weather]);
+  useEffect(() => getLocation(), []);
   const WeathersValues = function () {
-    if (icon === "13d" || icon === "13n") {
+    const weatherIcon = document.querySelector(".weather-icon-png");
+    if (weatherInfo.icon === "13d" || weatherInfo.icon === "13n") {
       setWeather("눈");
+      weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
     } else if (
-      icon === "09d" ||
-      icon === "09n" ||
-      icon === "10d" ||
-      icon === "10n" ||
-      icon === "11d" ||
-      icon === "11n"
+      weatherInfo.icon === "09d" ||
+      weatherInfo.icon === "09n" ||
+      weatherInfo.icon === "10d" ||
+      weatherInfo.icon === "10n" ||
+      weatherInfo.icon === "11d" ||
+      weatherInfo.icon === "11n"
     ) {
       setWeather("비");
+      weatherIcon.setAttribute("src", "./weather_icon/raining.png");
     } else if (
-      icon === "03d" ||
-      icon === "03n" ||
-      icon === "04d" ||
-      icon === "04n" ||
-      icon === "50d" ||
-      icon === "50n"
+      weatherInfo.icon === "03d" ||
+      weatherInfo.icon === "03n" ||
+      weatherInfo.icon === "04d" ||
+      weatherInfo.icon === "04n" ||
+      weatherInfo.icon === "50d" ||
+      weatherInfo.icon === "50n"
     ) {
       setWeather("흐림");
+      weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
     } else {
       setWeather("맑음");
+      weatherIcon.setAttribute("src", "./weather_icon/sun.png");
     }
   };
 
@@ -131,16 +126,16 @@ function UserSelect() {
       <div id="common-select-container">
         <div id="weather-container">
           <div className="weather-icon">
-            {loading ? (
+            {weatherInfo.loading ? (
               <i className="fas fa-spinner"></i>
             ) : (
               <img className="weather-icon-png"></img>
             )}
           </div>
-          {!loading && (
+          {!weatherInfo.loading && (
             <div id="weather-info-container">
-              <p className="weather-local">{location}</p>
-              <p className="weather-temp">{Math.floor(temp) + "℃"}</p>
+              <p className="weather-local">{weatherInfo.location}</p>
+              <p className="weather-temp">{Math.floor(weatherInfo.temp) + "℃"}</p>
             </div>
           )}
         </div>
