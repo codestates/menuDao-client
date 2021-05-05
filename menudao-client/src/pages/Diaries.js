@@ -34,6 +34,7 @@ function Diarylist() {
             key={Diary.id}
             feeling={Diary.feeling}
             weather={Diary.weather}
+            big_choice_menu={Diary.big_choice_menu}
             choice_menu={Diary.choice_menu}
           />
         ))}
