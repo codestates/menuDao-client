@@ -86,7 +86,8 @@ span {
   justify-content: left;
 }
 .weather-local {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
+  font-weight: 300;
   text-align: left;
   justify-content: center;
 }
