@@ -45,9 +45,9 @@ function Recommendation() {
       categoryIcon.setAttribute("src", "./food_icon/chinese.png");
     } else if (Recommend_Category === "양식") {
       categoryIcon.setAttribute("src", "./food_icon/steak.png");
-    } else if (Recommend_Category === "분식") {
+    } else if (Recommend_Category === "분식&패스트푸드") {
       categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
-    } else if (Recommend_Category === "안주") {
+    } else if (Recommend_Category === "야식&안주") {
       categoryIcon.setAttribute("src", "./food_icon/soju.png");
     } else {
       //디저트
@@ -76,10 +76,10 @@ function Recommendation() {
       .then((res) => {
         console.log(
           "추천받은 다른 메뉴 및 카테고리:",
-          res.data.food_name,
-          res.data.food_category
+          res.data.menu,
+          res.data.big_choice_menu
         );
-        dispatch(pushFoodInfo(res.data.food_name, res.data.food_category));
+        dispatch(pushFoodInfo(res.data.menu, res.data.big_choice_menu));
       })
       .catch((err) => {
         console.log(err);
@@ -95,10 +95,10 @@ function Recommendation() {
         `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/diary`,
         {
           weather: weather,
-          choice_menu: Recommend_Food,
+          choice_menu: Recommend_Food.slice(3, Recommend_Food.length),
           big_choice_menu: big_choice_menu,
           feeling: feeling,
-          date: moment().format("LLL"),
+          date: moment().format("YYMMDD, hh:mm"),
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -107,6 +107,9 @@ function Recommendation() {
       )
       .then(() => {
         swal("Diary에 저장되었습니다", "", "success");
+      })
+      .then(() => {
+        window.location.replace("/diarylist");
       })
       .catch((err) => {
         console.log(err);
@@ -120,14 +123,21 @@ function Recommendation() {
       <div id="common-container">
         <div id="food-icon-container">
           <img className="food-category-icon"></img>
-          <div className="food-name">{Recommend_Food}"마카롱"</div>
+          <div className="food-name">
+            "{Recommend_Food.slice(3, Recommend_Food.length)}"
+          </div>
         </div>
         <div id="recommend-container">
           <p className="recommend-subtitle">
-            오늘은 {Recommend_Food}마카롱 어떤가요?
+            오늘은 {Recommend_Food.slice(3, Recommend_Food.length)} 어떤가요?
           </p>
           <div className="rec-btn-container">
-            <button className="positive-btn" onClick={() => addDiarylist()}>
+            <button
+              className="positive-btn"
+              onClick={() => {
+                addDiarylist();
+              }}
+            >
               이 메뉴로 할래요
             </button>
             <button className="negative-btn" onClick={() => getAnotherFood()}>

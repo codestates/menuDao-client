@@ -23,11 +23,11 @@ function UserSelect() {
     icon: "",
     loading: true,
     location: "",
-  })
+  });
   const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-          async function (position) {
+        async function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
           const API_KEY = "4d8822288b7fb34e914b976fab096207";
@@ -43,8 +43,8 @@ function UserSelect() {
                 temp: json.main.temp,
                 icon: json.weather[0].icon,
                 loading: false,
-                location: json.name
-              })        
+                location: json.name,
+              });
             })
             .then(function () {
               WeathersValues();
@@ -135,8 +135,12 @@ function UserSelect() {
           </div>
           {!weatherInfo.loading && (
             <div id="weather-info-container">
-              <p className="weather-local">{weatherInfo.location.toUpperCase()}</p>
-              <p className="weather-temp">{Math.floor(weatherInfo.temp) + "℃"}</p>
+              <p className="weather-local">
+                {weatherInfo.location.toUpperCase()}
+              </p>
+              <p className="weather-temp">
+                {Math.floor(weatherInfo.temp) + "℃"}
+              </p>
             </div>
           )}
         </div>
@@ -271,7 +275,7 @@ function UserSelect() {
                 onChange={(e) => {
                   setBigMenu(e.target.value);
                 }}
-                value="분식"
+                value="분식&패스트푸드"
                 name="food"
                 type="radio"
                 className="food-category"
@@ -284,7 +288,7 @@ function UserSelect() {
                 onChange={(e) => {
                   setBigMenu(e.target.value);
                 }}
-                value="안주"
+                value="야식&안주"
                 name="food"
                 type="radio"
                 className="food-category"

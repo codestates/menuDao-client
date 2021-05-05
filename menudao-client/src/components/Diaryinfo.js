@@ -5,29 +5,42 @@ import "../css/diary.css";
 import dotenv from "dotenv";
 dotenv.config();
 
-function Diaryinfo({ key, feeling, weather, big_choice_menu, choice_menu, date, comment}) {
+function Diaryinfo({
+  id,
+  feeling,
+  weather,
+  big_choice_menu,
+  choice_menu,
+  date,
+  comment,
+}) {
   const [fileUrl, setFileUrl] = useState(null);
   const [isClick, setIsClick] = useState(false);
-  console.log(comment);
-  function processImage(event){
+
+  console.log("사용자 코멘트:", comment);
+
+  let editcomment = "";
+
+  function processImage(event) {
     const imageFile = event.target.files[0];
-    if(imageFile) {
+    if (imageFile) {
       const imageUrl = URL.createObjectURL(imageFile);
-      setFileUrl(imageUrl)
-    }else {
+      setFileUrl(imageUrl);
+    } else {
       setFileUrl(null);
     }
   }
-  const changeComment = function (e) {
-    comment = e.target.value;
-  }
+  const changeComment = function (comment) {
+    editcomment = comment;
+  };
+
   const diaryEditHandler = function () {
     axios
       .patch(
         `${process.env.REACT_APP_HTTP}://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/diary`,
         {
-            comment: comment,
-            diary_id: key,
+          comment: editcomment,
+          diary_id: id,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -56,9 +69,9 @@ function Diaryinfo({ key, feeling, weather, big_choice_menu, choice_menu, date, 
       categoryIcon.setAttribute("src", "./food_icon/chinese.png");
     } else if (big_choice_menu === "양식") {
       categoryIcon.setAttribute("src", "./food_icon/steak.png");
-    } else if (big_choice_menu === "분식") {
+    } else if (big_choice_menu === "분식&패스트푸드") {
       categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
-    } else if (big_choice_menu === "안주") {
+    } else if (big_choice_menu === "야식&안주") {
       categoryIcon.setAttribute("src", "./food_icon/soju.png");
     } else {
       //디저트
@@ -74,8 +87,7 @@ function Diaryinfo({ key, feeling, weather, big_choice_menu, choice_menu, date, 
       weatherIcon.setAttribute("src", "./weather_icon/raining.png");
     } else if (weather === "흐림") {
       weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
-    } else {
-      //맑음
+    } else if (weather === "맑음") {
       weatherIcon.setAttribute("src", "./weather_icon/sun.png");
     }
   };
@@ -98,7 +110,6 @@ function Diaryinfo({ key, feeling, weather, big_choice_menu, choice_menu, date, 
   useEffect(() => Weather_Icon(), []);
   useEffect(() => Feeling_Icon(), []);
 
-  
   return (
     <>
       <div id="side-bar">
@@ -111,32 +122,63 @@ function Diaryinfo({ key, feeling, weather, big_choice_menu, choice_menu, date, 
             <span className="diaryinfo-food-name">{choice_menu}</span>
             <span className="daryinfo-date">{date}</span>
             {/* 기분: 아이콘, 음식대분류: 이미지 */}
-            
-              <i className="fas fa-grin-hearts"></i>
-              <img className="food-icon" src="./food_icon/bibimbap.png"></img>
-              <img className="weather-icon" src="./weather_icon/sun.png"></img>    
+
+            <i className="fas fa-grin-hearts"></i>
+            <img className="food-icon" src="./food_icon/bibimbap.png"></img>
+            <img className="weather-icon" src="./weather_icon/sun.png"></img>
           </div>
           <div id="diary-img-container">
-          {fileUrl 
-          ? <img className="upload-img" src={fileUrl}></img>
-          : <div className="upload-img-thum"></div>
-          }
-          <label className="upload-btn" htmlFor="input-file">PHOTO UPLOAD</label>
-          <input type="file" id="input-file" accept="image/*" onChange={processImage}></input>
+            {fileUrl ? (
+              <img className="upload-img" src={fileUrl}></img>
+            ) : (
+              <div className="upload-img-thum"></div>
+            )}
+            <label className="upload-btn" htmlFor="input-file">
+              PHOTO UPLOAD
+            </label>
+            <input
+              type="file"
+              id="input-file"
+              accept="image/*"
+              onChange={processImage}
+            ></input>
           </div>
         </div>
         <div id="diaryinfo-lower-container">
-        <div className="comment-container">
-          <div className="diaryinfo-title">COMMENT</div>
-            { !isClick 
-              ? <button id="diary-edit-btn" onClick={() => {setIsClick(true)}}>EDIT</button>
-              : <button id="diary-save-btn" onClick={() => {setIsClick(false); diaryEditHandler()}}>SAVE</button>
-            }
-        </div>
-          {!isClick
-            ? <div className="diaryinfo-comment">{comment}</div>
-            : <input className="diaryinfo-comment-input" onChange={(e) => {changeComment(e)}}></input>
-          }
+          <div className="comment-container">
+            <div className="diaryinfo-title">COMMENT</div>
+            {!isClick ? (
+              <button
+                id="diary-edit-btn"
+                onClick={() => {
+                  setIsClick(true);
+                }}
+              >
+                EDIT
+              </button>
+            ) : (
+              <button
+                id="diary-save-btn"
+                onClick={() => {
+                  setIsClick(false);
+                  diaryEditHandler();
+                  window.location.replace("/diary");
+                }}
+              >
+                SAVE
+              </button>
+            )}
+          </div>
+          {!isClick ? (
+            <div className="diaryinfo-comment">{comment}</div>
+          ) : (
+            <input
+              className="diaryinfo-comment-input"
+              onChange={(e) => {
+                changeComment(e.target.value);
+              }}
+            ></input>
+          )}
         </div>
       </div>
     </>
