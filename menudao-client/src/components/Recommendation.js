@@ -49,13 +49,12 @@ function Recommendation() {
       categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
     } else if (Recommend_Category === "야식&안주") {
       categoryIcon.setAttribute("src", "./food_icon/soju.png");
-    } else {
-      //디저트
+    } else if (Recommend_Category === "디저트") {
       categoryIcon.setAttribute("src", "./food_icon/macaron.png");
     }
   };
 
-  useEffect(() => Category_Icon(), [Recommend_Category]);
+  useEffect(() => Category_Icon(), []);
 
   // 만약, 다른 메뉴를 추천받고 싶으면 다시 POST요청
   const getAnotherFood = function () {
@@ -122,7 +121,7 @@ function Recommendation() {
     <>
       <div id="common-container">
         <div id="food-icon-container">
-          <img className="food-category-icon"></img>
+          <img className="food-category-icon" alt="big-choice-menu-icon" />
           <div className="food-name">
             "{Recommend_Food.slice(3, Recommend_Food.length)}"
           </div>

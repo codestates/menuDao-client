@@ -16,7 +16,7 @@ function Diaryinfo({
 }) {
   const [fileUrl, setFileUrl] = useState(null);
   const [isClick, setIsClick] = useState(false);
-
+  console.log(fileUrl);
   console.log("사용자 코멘트:", comment);
 
   let editcomment = "";
@@ -73,7 +73,7 @@ function Diaryinfo({
       categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
     } else if (big_choice_menu === "야식&안주") {
       categoryIcon.setAttribute("src", "./food_icon/soju.png");
-    } else {
+    } else if (big_choice_menu === "디저트") {
       //디저트
       categoryIcon.setAttribute("src", "./food_icon/macaron.png");
     }
@@ -122,14 +122,13 @@ function Diaryinfo({
             <span className="diaryinfo-food-name">{choice_menu}</span>
             <span className="daryinfo-date">{date}</span>
             {/* 기분: 아이콘, 음식대분류: 이미지 */}
-
-            <i className="fas fa-grin-hearts"></i>
-            <img className="food-icon" src="./food_icon/bibimbap.png"></img>
-            <img className="weather-icon" src="./weather_icon/sun.png"></img>
+            <i />
+            <img alt="음식 대분류 아이콘" className="food-icon" />
+            <img alt="날씨 아이콘" className="weather-icon" />
           </div>
           <div id="diary-img-container">
             {fileUrl ? (
-              <img className="upload-img" src={fileUrl}></img>
+              <img alt="이미지 업로드" className="upload-img" src={fileUrl} />
             ) : (
               <div className="upload-img-thum"></div>
             )}

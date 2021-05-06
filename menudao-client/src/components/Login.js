@@ -59,6 +59,7 @@ function Login({ turnOffModal_CSS, setLoginModal, setJoinModal }) {
             <input
               className="login-input"
               placeholder="비밀번호"
+              type="password"
               onChange={(e) => {
                 setUserPW(e.target.value);
               }}

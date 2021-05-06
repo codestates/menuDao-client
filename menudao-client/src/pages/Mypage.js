@@ -45,7 +45,10 @@ function Mypage() {
       });
   };
 
-  useEffect(() => getMypageInfo(), []);
+  useEffect(() => {
+    getMypageInfo();
+  }, []);
+
   return (
     <>
       <Nav />

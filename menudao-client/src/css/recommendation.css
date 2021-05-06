@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 img {
-  opacity: 80%;
+  opacity: 0.8;
 }
 #common-container {
   grid-column: 3 / 5;
@@ -88,7 +88,6 @@ img {
 .positive-btn:hover, .negative-btn:hover {
   background-color:  #5c5c5c;
   box-shadow: 0px 8px 15px rgba(63, 63, 63, 0.1);
-  
   color: #fff;
   transform: translateY(-3px);
 }

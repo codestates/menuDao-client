@@ -110,7 +110,7 @@
 #diaryinfo-subtitle > .fa-grin-hearts {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
-  opacity: 80%;
+  opacity: 0.8;
   justify-self: center;
   align-self: center;
   font-size: 5vw;

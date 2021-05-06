@@ -37,13 +37,14 @@ function Nav() {
     <>
       <div id="nav-container">
         <span id="logo">
-          <img
+          <img alt=""
             className="nav-logo"
             src="./main-logo.png"
+            alt="main-logo"
             onClick={() => {
               history.push("/select");
             }}
-          ></img>
+          />
         </span>
         <div id="nav-btn-container">
           <button

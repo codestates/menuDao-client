@@ -24,6 +24,7 @@ function UserSelect() {
     loading: true,
     location: "",
   });
+
   const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -45,9 +46,21 @@ function UserSelect() {
                 loading: false,
                 location: json.name,
               });
+              WeathersValues();
             })
             .then(function () {
-              WeathersValues();
+              const weatherIcon = document.querySelector(".weather-icon-png");
+              if (weatherIcon) {
+                if (weather === "눈") {
+                  weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
+                } else if (weather === "비") {
+                  weatherIcon.setAttribute("src", "./weather_icon/raining.png");
+                } else if (weatherInfo === "흐림") {
+                  weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
+                } else {
+                  weatherIcon.setAttribute("src", "./weather_icon/sun.png");
+                }
+              }
             });
         },
         function (error) {
@@ -66,11 +79,13 @@ function UserSelect() {
   };
   // Rerendering 방지
   useEffect(() => getLocation(), []);
+  useEffect(() => {
+    return () => setweatherInfo(false); // cleanup function을 이용
+  }, []);
   const WeathersValues = function () {
-    const weatherIcon = document.querySelector(".weather-icon-png");
     if (weatherInfo.icon === "13d" || weatherInfo.icon === "13n") {
       setWeather("눈");
-      weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
+      // weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
     } else if (
       weatherInfo.icon === "09d" ||
       weatherInfo.icon === "09n" ||
@@ -80,7 +95,7 @@ function UserSelect() {
       weatherInfo.icon === "11n"
     ) {
       setWeather("비");
-      weatherIcon.setAttribute("src", "./weather_icon/raining.png");
+      // weatherIcon.setAttribute("src", "./weather_icon/raining.png");
     } else if (
       weatherInfo.icon === "03d" ||
       weatherInfo.icon === "03n" ||
@@ -90,10 +105,10 @@ function UserSelect() {
       weatherInfo.icon === "50n"
     ) {
       setWeather("흐림");
-      weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
+      // weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
     } else {
       setWeather("맑음");
-      weatherIcon.setAttribute("src", "./weather_icon/sun.png");
+      // weatherIcon.setAttribute("src", "./weather_icon/sun.png");
     }
   };
 
@@ -130,7 +145,7 @@ function UserSelect() {
             {weatherInfo.loading ? (
               <i className="fas fa-spinner"></i>
             ) : (
-              <img className="weather-icon-png"></img>
+              <img alt="" className="weather-icon-png"></img>
             )}
           </div>
           {!weatherInfo.loading && (
@@ -214,10 +229,11 @@ function UserSelect() {
           <div id="category-container">
             <div className="checkboxgroup">
               <img
+                alt=""
                 className="food-icon"
                 alt="korean-food"
                 src="./food_icon/bibimbap.png"
-              ></img>
+              />
               <label className="category-label">한식</label>
               <input
                 onChange={(e) => {
@@ -230,7 +246,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/nigiri.png"></img>
+              <img
+                alt="japanese-food"
+                className="food-icon"
+                src="./food_icon/nigiri.png"
+              ></img>
               <label className="category-label">일식</label>
               <input
                 onChange={(e) => {
@@ -243,7 +263,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/chinese.png"></img>
+              <img
+                alt="chinese-food"
+                className="food-icon"
+                src="./food_icon/chinese.png"
+              ></img>
               <label className="category-label">중식</label>
               <input
                 onChange={(e) => {
@@ -256,7 +280,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/steak.png"></img>
+              <img
+                alt="american-food"
+                className="food-icon"
+                src="./food_icon/steak.png"
+              ></img>
               <label className="category-label">양식</label>
               <input
                 onChange={(e) => {
@@ -269,7 +297,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/fishcake.png"></img>
+              <img
+                alt="snack-food"
+                className="food-icon"
+                src="./food_icon/fishcake.png"
+              ></img>
               <label className="category-label">분식</label>
               <input
                 onChange={(e) => {
@@ -282,7 +314,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/soju.png"></img>
+              <img
+                alt="alcohol-snack"
+                className="food-icon"
+                src="./food_icon/soju.png"
+              ></img>
               <label className="category-label">안주</label>
               <input
                 onChange={(e) => {
@@ -295,7 +331,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/macaron.png"></img>
+              <img
+                alt="dessert"
+                className="food-icon"
+                src="./food_icon/macaron.png"
+              ></img>
               <label className="category-label">디저트</label>
               <input
                 onChange={(e) => {
@@ -314,6 +354,7 @@ function UserSelect() {
         <button
           id="select-btn"
           onClick={() => {
+            console.log("click");
             if (weather !== "" && big_choice_menu !== "" && feeling !== "") {
               selectRequestHandler();
             } else {
