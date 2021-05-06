@@ -24,9 +24,7 @@ function UserSelect() {
     loading: true,
     location: "",
   });
-  console.log(big_choice_menu);
-  console.log(feeling);
-  console.log(weather);
+
   const getLocation = function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

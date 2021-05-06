@@ -73,7 +73,7 @@ function Diaryinfo({
       categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
     } else if (big_choice_menu === "야식&안주") {
       categoryIcon.setAttribute("src", "./food_icon/soju.png");
-    } else {
+    } else if (big_choice_menu === "디저트") {
       //디저트
       categoryIcon.setAttribute("src", "./food_icon/macaron.png");
     }
@@ -122,7 +122,7 @@ function Diaryinfo({
             <span className="diaryinfo-food-name">{choice_menu}</span>
             <span className="daryinfo-date">{date}</span>
             {/* 기분: 아이콘, 음식대분류: 이미지 */}
-            <i className="fas fa-grin-hearts"></i>
+            <i />
             <img alt="음식 대분류 아이콘" className="food-icon" />
             <img alt="날씨 아이콘" className="weather-icon" />
           </div>

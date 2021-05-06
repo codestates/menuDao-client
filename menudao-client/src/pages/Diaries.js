@@ -85,8 +85,8 @@ function Diarylist() {
               key={Diary.id}
               id={Diary.id}
               feeling={Diary.feeling}
-              weather={Diary.weatherIcon}
-              big_choice_menu={Diary.bigchoiceicon}
+              weather={Diary.weather}
+              big_choice_menu={Diary.big_choice_menu}
               choice_menu={Diary.choice_menu}
               date={Diary.date}
               comment={Diary.comment}
