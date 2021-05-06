@@ -115,6 +115,68 @@
   align-self: center;
   font-size: 5vw;
 }
+#diaryinfo-subtitle > .fa-frown {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  opacity: 0.8;
+  justify-self: center;
+  align-self: center;
+  font-size: 5vw;
+}
+#diaryinfo-subtitle > .fa-smile {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  opacity: 0.8;
+  justify-self: center;
+  align-self: center;
+  font-size: 5vw;
+}
+#diaryinfo-subtitle > .fa-grimace {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  opacity: 0.8;
+  justify-self: center;
+  align-self: center;
+  font-size: 5vw;
+}
+.diaries-empty {
+  border: 1px solid #79797925;
+  border-radius: 10px;
+  padding: 30px;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr;
+  align-content: flex-end;
+  font-size: 2rem;
+  background-color: #fff;
+  text-align: center;
+  height: 100%;
+  box-shadow:
+    0 2.8px 2.2px rgba(255, 221, 179, 0.034),
+    0 6.7px 5.3px rgba(255, 221, 179, 0.034),
+    0 12.5px 10px rgba(184, 158, 126, 0.034),
+    0 22px 20px rgba(169, 150, 127, 0.034),
+    0 41.8px 33.4px rgba(152, 115, 69, 0.034),
+    0 80px 80px rgba(152, 148, 143, 0.034);
+}
+.diaries-empty-inner {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+.diaries-empty > img {
+  align-self: baseline;
+  justify-self: center;
+  width: 120px;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  text-align: center;
+}
 .food-icon {
   grid-column: 2 / 3;
   grid-row: 2 / 3;

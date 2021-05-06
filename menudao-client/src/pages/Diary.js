@@ -50,7 +50,7 @@ function Diary() {
         weather={DiaryInfo.weather}
         big_choice_menu={DiaryInfo.big_choice_menu}
         choice_menu={DiaryInfo.choice_menu}
-        date={DiaryInfo.date}
+        date={new String(new Date(DiaryInfo.date).toLocaleString())}
         comment={DiaryInfo.comment}
       />
     </>

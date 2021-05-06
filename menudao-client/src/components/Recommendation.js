@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushFoodInfo } from "../module/RecommendFood";
 import { useHistory } from "react-router";
-import moment from "moment";
 import "../css/recommendation.css";
 import swal from "sweetalert";
 import dotenv from "dotenv";
@@ -73,11 +72,6 @@ function Recommendation() {
         }
       )
       .then((res) => {
-        console.log(
-          "추천받은 다른 메뉴 및 카테고리:",
-          res.data.menu,
-          res.data.big_choice_menu
-        );
         dispatch(pushFoodInfo(res.data.menu, res.data.big_choice_menu));
       })
       .catch((err) => {
@@ -97,7 +91,6 @@ function Recommendation() {
           choice_menu: Recommend_Food.slice(3, Recommend_Food.length),
           big_choice_menu: big_choice_menu,
           feeling: feeling,
-          date: moment().format("YYMMDD, hh:mm"),
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -108,7 +101,7 @@ function Recommendation() {
         swal("Diary에 저장되었습니다", "", "success");
       })
       .then(() => {
-        window.location.replace("/diarylist");
+        window.setTimeout(window.location.replace("/diarylist"), 1000);
       })
       .catch((err) => {
         console.log(err);

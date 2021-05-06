@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 img {
-  opacity: 0.8;
+  opacity: 1;
 }
 #common-container {
   grid-column: 3 / 5;

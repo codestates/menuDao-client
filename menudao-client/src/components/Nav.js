@@ -37,7 +37,8 @@ function Nav() {
     <>
       <div id="nav-container">
         <span id="logo">
-          <img alt=""
+          <img
+            alt=""
             className="nav-logo"
             src="./main-logo.png"
             alt="main-logo"

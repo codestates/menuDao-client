@@ -136,6 +136,7 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
               id="join-input"
               className="join-input-pw"
               placeholder="8자 이상, 알파벳과 숫자 및 특수문자(@$!%*#?&) 하나 이상 포함"
+              type="password"
               onChange={(e) => {
                 dispatch(checkUserPW(e.target.value));
               }}
@@ -144,6 +145,7 @@ function Join({ turnOffModal_CSS, setJoinModal, setLoginModal }) {
               id="join-input"
               className="join-input-samepw"
               placeholder="비밀번호 확인"
+              type="password"
               onChange={(e) => {
                 dispatch(checkSamePW(e.target.value));
               }}

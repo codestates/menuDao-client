@@ -77,7 +77,6 @@ export const resetuserInfo = () => ({
 export default function validationReducer(state = initialState, action) {
   switch (action.type) {
     case PUSH_USER_NAME:
-      console.log("user 이름", action.payload);
       return {
         ...state,
         userInfo: {
@@ -89,7 +88,6 @@ export default function validationReducer(state = initialState, action) {
       const idInput = document.querySelector(".join-input-id");
       if (isRightId(action.payload)) {
         idInput.style.border = "1px solid blue";
-        console.log("입력한 ID:", action.payload);
         return {
           ...state,
           userInfo: {
@@ -99,7 +97,6 @@ export default function validationReducer(state = initialState, action) {
         };
       } else {
         idInput.style.border = "1px solid red";
-        console.log("ID 형식에 맞추어주세요.");
         return {
           ...state,
           userInfo: {
@@ -111,7 +108,6 @@ export default function validationReducer(state = initialState, action) {
     case CHECK_USER_BIRTH:
       const birthInput = document.querySelector(".join-input-birth");
       if (isRightBirth(action.payload)) {
-        console.log("입력한 생년월일:", action.payload);
         birthInput.style.border = "1px solid blue";
         return {
           ...state,
@@ -122,7 +118,6 @@ export default function validationReducer(state = initialState, action) {
         };
       } else {
         birthInput.style.border = "1px solid red";
-        console.log("생년월일 형식에 맞추어주세요.");
         return {
           ...state,
           userInfo: {
@@ -132,7 +127,6 @@ export default function validationReducer(state = initialState, action) {
         };
       }
     case PUSH_USER_GENDER:
-      console.log("user 성별", action.payload);
       return {
         ...state,
         userInfo: {
@@ -143,7 +137,6 @@ export default function validationReducer(state = initialState, action) {
     case CHECK_USER_PW:
       const pwInput = document.querySelector(".join-input-pw");
       if (isRightPW(action.payload)) {
-        console.log("입력한 패스워드:", action.payload);
         pwInput.style.border = "1px solid blue";
         return {
           ...state,
@@ -154,7 +147,6 @@ export default function validationReducer(state = initialState, action) {
         };
       } else {
         pwInput.style.border = "1px solid red";
-        console.log("패스워드 형식에 맞추어주세요.");
         return {
           ...state,
           userInfo: {
@@ -164,8 +156,6 @@ export default function validationReducer(state = initialState, action) {
         };
       }
     case CHECK_SAME_PW:
-      console.log("user 패스워드", state.userInfo.user_password);
-      console.log("user 패스워드 확인", action.payload);
       const pwcheckInput = document.querySelector(".join-input-samepw");
       if (state.userInfo.user_password === action.payload) {
         pwcheckInput.style.border = "1px solid blue";
@@ -178,7 +168,6 @@ export default function validationReducer(state = initialState, action) {
         };
       } else {
         pwcheckInput.style.border = "1px solid red";
-        console.log("패스워드가 일치하는지 확인해주세요");
         return {
           ...state,
           userInfo: {

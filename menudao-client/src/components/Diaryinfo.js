@@ -16,10 +16,8 @@ function Diaryinfo({
 }) {
   const [fileUrl, setFileUrl] = useState(null);
   const [isClick, setIsClick] = useState(false);
-  console.log(fileUrl);
-  console.log("사용자 코멘트:", comment);
 
-  let editcomment = "";
+  let editcomment = ""; // 수정한 코멘트를 임시로 담아놓는 변수
 
   function processImage(event) {
     const imageFile = event.target.files[0];
@@ -48,7 +46,6 @@ function Diaryinfo({
         }
       )
       .then((res) => {
-        console.log(res.data);
         swal("코멘트가 수정 되었습니다.", "", "success", {
           buttons: false,
           timer: 2000,

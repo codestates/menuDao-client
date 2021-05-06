@@ -39,7 +39,6 @@ function UserSelect() {
               return response.json();
             })
             .then(function (json) {
-              console.log(json);
               setweatherInfo({
                 temp: json.main.temp,
                 icon: json.weather[0].icon,
@@ -127,7 +126,6 @@ function UserSelect() {
         }
       )
       .then((res) => {
-        console.log(res.data);
         dispatch(pushFoodInfo(res.data.menu, res.data.big_choice_menu));
         swal("정보 전송 완료", "", "success");
         dispatch(pushWeatherInfo(weather, big_choice_menu, feeling));
@@ -354,7 +352,6 @@ function UserSelect() {
         <button
           id="select-btn"
           onClick={() => {
-            console.log("click");
             if (weather !== "" && big_choice_menu !== "" && feeling !== "") {
               selectRequestHandler();
             } else {
