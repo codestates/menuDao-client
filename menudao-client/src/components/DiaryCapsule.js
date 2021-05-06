@@ -54,12 +54,11 @@ function DiaryCapsule({
     });
   };
 
-  // !!!!!!!!!!!!!!!!빈테그로 감싸놓은거 div로 감싸야한다!!!!!!!!!!!!!1
   return (
     <>
       <div id="diaries-each-container">
         <button id="diaries-btn" onClick={() => checkDeleteAlert(id)}>
-          <i class="fas fa-window-close"></i>
+          <i className="fas fa-window-close"></i>
         </button>
         <div
           className="diary"

@@ -28,7 +28,6 @@ function UserEdit({ setIsClick }) {
   // 모든 조건에 다 통과된다면 요청, edit -> mypage로 다시 렌더
   const PwInputChecking = function () {
     if (!user_password) {
-      console.log(user_password);
       swal("변경할 비밀번호를 입력해주세요.", "", "error");
     } else {
       swal("비밀번호가 변경되었습니다.", "", "success", {
@@ -53,7 +52,6 @@ function UserEdit({ setIsClick }) {
         }
       )
       .then((res) => {
-        console.log(res.data);
         swal("비밀번호가 변경되었습니다.", "", "success", {
           buttons: false,
           timer: 2000,
