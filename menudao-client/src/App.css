@@ -312,7 +312,7 @@ label {
     margin: -265px 0px 0 -250px;
   }
   to {
-    opacity: 100%;
+    opacity: 1;
     margin: -250px 0 0 -250px;
   }
 }
@@ -328,13 +328,13 @@ label {
     margin: -190px 0px 0 -250px;
   }
   to {
-    opacity: 100%;
+    opacity: 1;
     margin: -175px 0 0 -250px;
   }
 }
 @keyframes close-modal-login {
   from {
-    /* opacity: 100%; */
+
   }
   to {
     opacity: 0;
