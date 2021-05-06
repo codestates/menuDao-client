@@ -106,9 +106,9 @@ function Diaryinfo({
     }
   };
 
-  useEffect(() => Category_Icon(), []);
-  useEffect(() => Weather_Icon(), []);
-  useEffect(() => Feeling_Icon(), []);
+  useEffect(() => Category_Icon());
+  useEffect(() => Weather_Icon());
+  useEffect(() => Feeling_Icon());
 
   return (
     <>
@@ -124,12 +124,20 @@ function Diaryinfo({
             {/* 기분: 아이콘, 음식대분류: 이미지 */}
 
             <i className="fas fa-grin-hearts"></i>
-            <img className="food-icon" src="./food_icon/bibimbap.png"></img>
-            <img className="weather-icon" src="./weather_icon/sun.png"></img>
+            <img
+              className="food-icon"
+              src="./food_icon/bibimbap.png"
+              alt="음식 대분류 아이콘"
+            />
+            <img
+              className="weather-icon"
+              src="./weather_icon/sun.png"
+              alt="날씨 아이콘"
+            />
           </div>
           <div id="diary-img-container">
             {fileUrl ? (
-              <img className="upload-img" src={fileUrl}></img>
+              <img className="upload-img" src={fileUrl} alt="uploading" />
             ) : (
               <div className="upload-img-thum"></div>
             )}

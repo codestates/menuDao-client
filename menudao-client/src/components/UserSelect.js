@@ -65,7 +65,7 @@ function UserSelect() {
     }
   };
   // Rerendering 방지
-  useEffect(() => getLocation(), []);
+  useEffect(() => getLocation());
   const WeathersValues = function () {
     const weatherIcon = document.querySelector(".weather-icon-png");
     if (weatherInfo.icon === "13d" || weatherInfo.icon === "13n") {
@@ -130,7 +130,7 @@ function UserSelect() {
             {weatherInfo.loading ? (
               <i className="fas fa-spinner"></i>
             ) : (
-              <img className="weather-icon-png"></img>
+              <img className="weather-icon-png" alt="날씨 아이콘" />
             )}
           </div>
           {!weatherInfo.loading && (
@@ -217,7 +217,7 @@ function UserSelect() {
                 className="food-icon"
                 alt="korean-food"
                 src="./food_icon/bibimbap.png"
-              ></img>
+              />
               <label className="category-label">한식</label>
               <input
                 onChange={(e) => {
@@ -230,7 +230,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/nigiri.png"></img>
+              <img
+                className="food-icon"
+                src="./food_icon/nigiri.png"
+                alt="japanese-food"
+              />
               <label className="category-label">일식</label>
               <input
                 onChange={(e) => {
@@ -243,7 +247,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/chinese.png"></img>
+              <img
+                className="food-icon"
+                src="./food_icon/chinese.png"
+                alt="chinese-food"
+              />
               <label className="category-label">중식</label>
               <input
                 onChange={(e) => {
@@ -256,7 +264,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/steak.png"></img>
+              <img
+                className="food-icon"
+                src="./food_icon/steak.png"
+                alt="american-food"
+              />
               <label className="category-label">양식</label>
               <input
                 onChange={(e) => {
@@ -269,7 +281,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/fishcake.png"></img>
+              <img
+                className="food-icon"
+                src="./food_icon/fishcake.png"
+                alt="snackbar-food"
+              />
               <label className="category-label">분식</label>
               <input
                 onChange={(e) => {
@@ -282,7 +298,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/soju.png"></img>
+              <img
+                className="food-icon"
+                src="./food_icon/soju.png"
+                alt="안주"
+              />
               <label className="category-label">안주</label>
               <input
                 onChange={(e) => {
@@ -295,7 +315,11 @@ function UserSelect() {
               ></input>
             </div>
             <div className="checkboxgroup">
-              <img className="food-icon" src="./food_icon/macaron.png"></img>
+              <img
+                className="food-icon"
+                src="./food_icon/macaron.png"
+                alt="dessert"
+              />
               <label className="category-label">디저트</label>
               <input
                 onChange={(e) => {

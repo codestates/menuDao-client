@@ -1,0 +1,22 @@
+#diary-list-container {
+  grid-column: 3 / 5;
+  grid-row: 4 / 5;
+  justify-self: center;
+  align-self: center;
+  border: 1px solid red;
+}
+
+.diary {
+  grid-column: 3 / 5;
+  grid-row: 4 / 5;
+  justify-self: center;
+  border: 1px solid red;
+}
+
+.weather-icon {
+  width: 3rem;
+}
+
+.diary-food-icon {
+  width: 3rem;
+}

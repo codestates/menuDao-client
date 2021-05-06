@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/mypage.css";
 import swal from "sweetalert";
 import axios from "axios";
@@ -93,7 +93,10 @@ function UserEdit({ setIsClick }) {
           </div>
           <div id="userinfo-container">
             <div className="password-changer">
-              <input className="userinfo-edit" onChange={(e) => checkingPW(e)}></input>
+              <input
+                className="userinfo-edit"
+                onChange={(e) => checkingPW(e)}
+              ></input>
             </div>
             <div className="warning-message"></div>
           </div>
