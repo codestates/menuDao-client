@@ -39,7 +39,10 @@ function Diarylist() {
       </div>
       <div id="diary-list-container">
         {Diarylist.length === 0 ? (
-          <div>다이어리 목록이 비어있습니다</div>
+          <div className="diaries-empty">
+            <img alt="empty" src="./folder.png" />
+            <div className="diaries-empty-inner">다이어리 목록이 비어있습니다</div>
+          </div>
         ) : (
           Diarylist.map((Diary) => (
             <DiaryCapsule
