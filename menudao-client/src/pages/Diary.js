@@ -38,7 +38,7 @@ function Diary() {
       });
   };
 
-  useEffect(() => handleGetDiaryInfo());
+  useEffect(() => handleGetDiaryInfo(), []);
 
   return (
     <>

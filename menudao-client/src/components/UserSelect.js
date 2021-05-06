@@ -65,7 +65,7 @@ function UserSelect() {
     }
   };
   // Rerendering 방지
-  useEffect(() => getLocation());
+  useEffect(() => getLocation(), []);
   const WeathersValues = function () {
     const weatherIcon = document.querySelector(".weather-icon-png");
     if (weatherInfo.icon === "13d" || weatherInfo.icon === "13n") {

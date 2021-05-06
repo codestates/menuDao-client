@@ -31,7 +31,7 @@ function Diarylist() {
         swal("데이터를 읽어오지 못하였습니다", "", "error");
       });
   };
-  useEffect(() => handleGetDiarylist());
+  useEffect(() => handleGetDiarylist(), []);
 
   return (
     <>

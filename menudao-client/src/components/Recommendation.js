@@ -55,7 +55,7 @@ function Recommendation() {
     }
   };
 
-  useEffect(() => Category_Icon());
+  useEffect(() => Category_Icon(), []);
 
   // 만약, 다른 메뉴를 추천받고 싶으면 다시 POST요청
   const getAnotherFood = function () {

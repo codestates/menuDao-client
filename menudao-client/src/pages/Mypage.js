@@ -47,7 +47,7 @@ function Mypage() {
 
   useEffect(() => {
     getMypageInfo();
-  });
+  }, []);
 
   return (
     <>

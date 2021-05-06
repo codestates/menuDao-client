@@ -94,9 +94,9 @@ function DiaryCapsule({
       });
   };
 
-  useEffect(() => Category_Icon());
-  useEffect(() => Weather_Icon());
-  useEffect(() => Feeling_Icon());
+  useEffect(() => Category_Icon(), []);
+  useEffect(() => Weather_Icon(), []);
+  useEffect(() => Feeling_Icon(), []);
 
   const checkDeleteAlert = function (id) {
     swal({
