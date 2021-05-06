@@ -55,7 +55,7 @@ function Recommendation() {
     }
   };
 
-  useEffect(() => Category_Icon(), [Recommend_Category]);
+  useEffect(() => Category_Icon(), []);
 
   // 만약, 다른 메뉴를 추천받고 싶으면 다시 POST요청
   const getAnotherFood = function () {
@@ -122,7 +122,7 @@ function Recommendation() {
     <>
       <div id="common-container">
         <div id="food-icon-container">
-          <img className="food-category-icon"></img>
+          <img alt="" className="food-category-icon"></img>
           <div className="food-name">
             "{Recommend_Food.slice(3, Recommend_Food.length)}"
           </div>

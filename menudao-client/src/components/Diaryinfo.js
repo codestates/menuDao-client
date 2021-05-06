@@ -16,7 +16,7 @@ function Diaryinfo({
 }) {
   const [fileUrl, setFileUrl] = useState(null);
   const [isClick, setIsClick] = useState(false);
-
+  console.log(fileUrl);
   console.log("사용자 코멘트:", comment);
 
   let editcomment = "";
@@ -124,12 +124,12 @@ function Diaryinfo({
             {/* 기분: 아이콘, 음식대분류: 이미지 */}
 
             <i className="fas fa-grin-hearts"></i>
-            <img className="food-icon" src="./food_icon/bibimbap.png"></img>
-            <img className="weather-icon" src="./weather_icon/sun.png"></img>
+            <img alt="" className="food-icon" src="./food_icon/bibimbap.png"></img>
+            <img alt="" className="weather-icon" src="./weather_icon/sun.png"></img>
           </div>
           <div id="diary-img-container">
             {fileUrl ? (
-              <img className="upload-img" src={fileUrl}></img>
+              <img alt="" className="upload-img" src={fileUrl}></img>
             ) : (
               <div className="upload-img-thum"></div>
             )}
