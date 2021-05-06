@@ -131,6 +131,9 @@ ul {
   padding-left: 8px;
   font-size: 12px;
 }
+.join-input-pw::placeholder {
+  font-size: 9px;
+}
 .join-input::placeholder {
   font-size: 9px;
 }
