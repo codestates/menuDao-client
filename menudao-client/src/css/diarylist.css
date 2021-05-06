@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #diary-list-container {
   grid-column: 3 / 5;
   grid-row: 4 / 5;
@@ -20,3 +21,108 @@
 .diary-food-icon {
   width: 3rem;
 }
+=======
+#side-bar {
+  grid-column: 2 / 3;
+  grid-row: 3 / 5;
+}
+#diary-list-container {
+  grid-column: 3 / 5;
+  grid-row: 3 / 8;
+  border-radius: 5px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
+  margin-top: 30px;
+  border: 1px solid #5555551d;
+  background-color: #ffcc8071;
+  box-shadow:
+    0 2.8px 2.2px rgba(255, 221, 179, 0.034),
+    0 6.7px 5.3px rgba(255, 221, 179, 0.034),
+    0 12.5px 10px rgba(184, 158, 126, 0.034),
+    0 22px 20px rgba(169, 150, 127, 0.034),
+    0 41.8px 33.4px rgba(152, 115, 69, 0.034),
+    0 80px 80px rgba(152, 148, 143, 0.034);
+}
+#diaries-each-container {
+  border: 1px solid #7979791d;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 0px 15px;
+  z-index: 100;
+  transition: all 0.3s ease 0s;
+  box-shadow:
+    0 2.8px 2.2px rgba(255, 201, 135, 0.5),
+    0 6.7px 5.3px rgba(255, 201, 135, 0.5),
+    0 12.5px 10px rgba(255, 201, 135, 0.5),
+    0 22px 20px rgba(255, 201, 135, 0.5),
+    0 41.8px 33.4px rgba(255, 201, 135, 0.5),
+    0 80px 80px rgba(255, 201, 135, 0.5),
+}
+#diaries-each-container:hover {
+  background-color: hsla(46, 100%, 64%, 0.192); 
+}
+#diaries-icon-container {
+  grid-column: 3 / 5;
+  grid-row: 1 / 2;
+  justify-self: right;
+  align-self: center;
+}
+#diaries-icon-container > label {
+  margin: 0;
+}
+#diaries-btn {
+  float: right;
+  margin-top: 10px;
+  border: none;
+}
+.fa-window-close {
+  border: none;
+  font-size: 1.8rem;
+  color: #ffa726;
+  transition: all 0.3s ease 0s;
+}
+.fa-window-close:hover {
+  box-shadow: 0px 8px 15px rgba(63, 63, 63, 0.1);
+  transform: translateY(-3px);
+}
+.diary-menuName {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: left;
+  align-self: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.diary-comment {
+  grid-column: 1 / 5;
+  grid-row: 2 / 3;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #7979794a;
+  margin-bottom: 13px;
+}
+.diary-date {
+  align-self: center;
+  font-size: 1.1rem;
+}
+.diary-weather > .weather-icon {
+  width: 2.5rem;
+}
+.diary-food-icon {
+  width: 2.5em;
+  margin-left: 18px;
+}
+.diary-feeling > i {
+  font-size: 2.6rem;
+  margin-left: 18px;
+}
+.diary {
+  display: grid;
+  grid-template-columns: 0.4fr 0.4fr 0.3fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
+  height: 130px;
+}
+>>>>>>> 4ede1ecf372fdf86b71aac745e85098321e7955c
