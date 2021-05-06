@@ -7,9 +7,6 @@ import "../css/diarylist.css";
 import dotenv from "dotenv";
 dotenv.config();
 
-// GET: /diary (다이어리 목록 중 하나 클릭 시 하나의 다이어리 정보를 받음)
-// DELETE: /diary-list (다이어리 목록 중 클릭한 것들을 삭제하고 id값들을 배열형태로 넘겨준다)
-// comment 필요
 function DiaryCapsule({
   id,
   feeling,
@@ -20,55 +17,21 @@ function DiaryCapsule({
   comment,
 }) {
   const history = useHistory();
+  console.log(big_choice_menu, weather, feeling);
 
   const Category_Icon = function () {
     const categoryIcon = document.querySelector(".diary-food-icon");
-    if (big_choice_menu === "한식") {
-      categoryIcon.setAttribute("src", "./food_icon/bibimbap.png");
-    } else if (big_choice_menu === "일식") {
-      categoryIcon.setAttribute("src", "./food_icon/nigiri.png");
-    } else if (big_choice_menu === "중식") {
-      categoryIcon.setAttribute("src", "./food_icon/chinese.png");
-    } else if (big_choice_menu === "양식") {
-      categoryIcon.setAttribute("src", "./food_icon/steak.png");
-    } else if (big_choice_menu === "분식&패스트푸드") {
-      categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
-    } else if (big_choice_menu === "야식&안주") {
-      categoryIcon.setAttribute("src", "./food_icon/soju.png");
-    } else {
-      //디저트
-      categoryIcon.setAttribute("src", "./food_icon/macaron.png");
-    }
+    categoryIcon.setAttribute("src", big_choice_menu);
   };
 
   const Weather_Icon = function () {
     const weatherIcon = document.querySelector(".weather-icon");
-    if (weather === "눈") {
-      weatherIcon.setAttribute("src", "./weather_icon/snowman.png");
-    } else if (weather === "비") {
-      weatherIcon.setAttribute("src", "./weather_icon/raining.png");
-    } else if (weather === "흐림") {
-      weatherIcon.setAttribute("src", "./weather_icon/clouds.png");
-    } else {
-      //맑음
-      weatherIcon.setAttribute("src", "./weather_icon/sun.png");
-    }
+    weatherIcon.setAttribute("src", weather);
   };
 
   const Feeling_Icon = function () {
-    //   i테그를 create하여 className을 할당하고 appendchild시켜준다
-    const feelingIcon = document.createElement("i");
-    if (feeling === "나쁨") {
-      feelingIcon.className = "fas fa-grimace";
-    } else if (feeling === "조금나쁨") {
-      feelingIcon.className = "fas fa-frown";
-    } else if (feeling === "평범") {
-      feelingIcon.className = "fas fa-smile";
-    } else if (feeling === "좋음") {
-      feelingIcon.className = "fas fa-grin-hearts";
-    }
-    const FeelingLabel = document.querySelector(".diary-feeling");
-    FeelingLabel.appendChild(feelingIcon);
+    const feelingIcon = document.querySelector("i");
+    feelingIcon.className = feeling;
   };
 
   // sweetAlert창을 이용하여 삭제버튼 클릭 시 한번 더 물어본다
@@ -125,7 +88,7 @@ function DiaryCapsule({
           <img className="weather-icon" alt="날씨 아이콘" />
         </label>
         <label className="diary-feeling">
-          {/* 여기에 기분 아이콘이 들어간다 */}
+          <i />
         </label>
         <img className="diary-food-icon" alt="음식 대분류 아이콘" />
         <div className="diary-comment">{comment}</div>

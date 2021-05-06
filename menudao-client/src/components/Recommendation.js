@@ -49,8 +49,7 @@ function Recommendation() {
       categoryIcon.setAttribute("src", "./food_icon/fishcake.png");
     } else if (Recommend_Category === "야식&안주") {
       categoryIcon.setAttribute("src", "./food_icon/soju.png");
-    } else {
-      //디저트
+    } else if (Recommend_Category === "디저트") {
       categoryIcon.setAttribute("src", "./food_icon/macaron.png");
     }
   };
