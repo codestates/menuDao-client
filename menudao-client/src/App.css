@@ -51,6 +51,7 @@ input.join-gender {
   grid-row: 2 / 3;
   justify-self: end;
   background: none;
+  align-self: center;
 }
 .main-btn {
   margin-left: 30px;
@@ -58,6 +59,7 @@ input.join-gender {
   font-weight: 400;
   font-size: 1.7rem;
   font-family: "Questrial", sans-serif;
+  letter-spacing: 1.5px;
   color: #424242;
   background: none;
 }
@@ -248,6 +250,7 @@ label {
   border-radius: 5px;
   font-size: 12px;
   border: 1px solid #ffb74d;
+  padding-left: 8px;
 }
 .login-input::placeholder {
   color: rgb(123, 123, 123);
@@ -335,7 +338,6 @@ label {
 }
 @keyframes close-modal-login {
   from {
-
   }
   to {
     opacity: 0;
