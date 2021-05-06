@@ -70,52 +70,6 @@ function Diarylist() {
   };
   useEffect(() => handleGetDiarylist(), []);
 
-  const Category_IconClassName = function () {
-    if (Diarylist.big_choice_menu === "한식") {
-      setbigchoiceicon("./food_icon/bibimbap.png");
-    } else if (Diarylist.big_choice_menu === "일식") {
-      setbigchoiceicon("./food_icon/nigiri.png");
-    } else if (Diarylist.big_choice_menu === "중식") {
-      setbigchoiceicon("./food_icon/chinese.png");
-    } else if (Diarylist.big_choice_menu === "양식") {
-      setbigchoiceicon("./food_icon/steak.png");
-    } else if (Diarylist.big_choice_menu === "분식&패스트푸드") {
-      setbigchoiceicon("./food_icon/fishcake.png");
-    } else if (Diarylist.big_choice_menu === "야식&안주") {
-      setbigchoiceicon("./food_icon/soju.png");
-    } else if (Diarylist.big_choice_menu === "디저트") {
-      setbigchoiceicon("./food_icon/macaron.png");
-    }
-  };
-
-  const Weather_IconClassName = function () {
-    if (Diarylist.weather === "눈") {
-      setweatherIcon("./weather_icon/snowman.png");
-    } else if (Diarylist.weather === "비") {
-      setweatherIcon("./weather_icon/raining.png");
-    } else if (Diarylist.weather === "흐림") {
-      setweatherIcon("./weather_icon/clouds.png");
-    } else if (Diarylist.weather === "맑음") {
-      setweatherIcon("./weather_icon/sun.png");
-    }
-  };
-
-  const Feeling_IconClassName = function () {
-    if (Diarylist.feeling === "나쁨") {
-      setfeelingIcon("fas fa-grimace");
-    } else if (Diarylist.feeling === "조금나쁨") {
-      setfeelingIcon("fas fa-frown");
-    } else if (Diarylist.feeling === "평범") {
-      setfeelingIcon("fas fa-smile");
-    } else if (Diarylist.feeling === "좋음") {
-      setfeelingIcon("fas fa-grin-hearts");
-    }
-  };
-
-  useEffect(() => Category_IconClassName(), []);
-  useEffect(() => Weather_IconClassName(), []);
-  useEffect(() => Feeling_IconClassName(), []);
-
   return (
     <>
       <Nav />
@@ -130,9 +84,9 @@ function Diarylist() {
             <DiaryCapsule
               key={Diary.id}
               id={Diary.id}
-              feeling={feelingIcon}
-              weather={weatherIcon}
-              big_choice_menu={bigchoiceicon}
+              feeling={Diary.feeling}
+              weather={Diary.weatherIcon}
+              big_choice_menu={Diary.bigchoiceicon}
               choice_menu={Diary.choice_menu}
               date={Diary.date}
               comment={Diary.comment}
